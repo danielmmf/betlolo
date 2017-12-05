@@ -1,12 +1,14 @@
-Feature: user
-  In order to manipulate users
-  As a user
-  I need to create modifiy and delete user
+Feature: usuario
+  Um usuário se cadastra no sistema
+  Como usuario
+  Devo conseguir me cadastrar com meu email
 
- Scenario: create new user
- 	As a user
- 	I need to be able to create a new user
- 	Given i have user with name "grupo de teste" 
- 	When i call user_save 
- 	Then  i call users 
- 	And Then i should see that total number users is "1"
+ Scenario: Um usuário só pode se cadastrar com a chave única sendo o email dele
+ 	Como usuario
+ 	Eu quero me cadastrar no sistema usando meu email
+ 	Dado que meu email é "usuario@teste.com" e meu nome é "Usuario"
+ 	Quando eu chamo user_save 
+ 	Entao eu chamo users 
+ 	E Entao i should see that total number users is "1"
+
+ 
