@@ -1,0 +1,176 @@
+<div class="container">
+   <div class="row">
+      <div class="span12" data-motopress-wrapper-file="page.php" data-motopress-wrapper-type="content">
+         <div class="row">
+            <div class="span12" data-motopress-type="static" data-motopress-static-file="/">
+               <section class="title-section">
+                  <h1 class="title-header">
+                     Minha conta	
+                  </h1>
+                  <!-- BEGIN BREADCRUMBS-->
+                  <ul class="breadcrumb breadcrumb__t">
+                     <li><a href="/">Home</a></li>
+                     <li class="divider"></li>
+                     <li class="active">Minha conta</li>
+                  </ul>
+                  <!-- END BREADCRUMBS -->
+               </section>
+               <!-- .title-section -->					
+            </div>
+         </div>
+         <div class="row">
+            <div class="span9 right right" id="content" data-motopress-type="loop" data-motopress-loop-file="loop/loop-page.php">
+               <div id="post-1888" class="post-1888 page type-page status-publish hentry page">
+                  <div class="woocommerce">
+                     <p class="myaccount_user">
+                        Olá <strong>Usuario</strong> (não é usuario? <a href="#!/logoff">Fazer Logoff</a>). Da pagina da sua conta vc consegue ver as compras anteriores , chegar os envios e alterar seus detalhes e informações <a href="#">Editar seus dados pessoais</a>.
+                     </p>
+                     <h2>Ultimas compras</h2>
+                     <table class="shop_table my_account_orders">
+                        <thead>
+                           <tr>
+                              <th class="order-number"><span class="nobr">Compra</span></th>
+                              <th class="order-date"><span class="nobr">Data</span></th>
+                              <th class="order-status"><span class="nobr">Status</span></th>
+                              <th class="order-total"><span class="nobr">Total</span></th>
+                              <th class="order-actions">&nbsp;</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr class="order" ng-repeat="carrinho in account.carrinhos">
+                              <td class="order-number">
+                                 <a href="#!/ver">
+                                 #{{carrinho.id}}					</a>
+                              </td>
+                              <td class="order-date">
+                                 <time datetime="{{carrinho.created_at}}" title="{{carrinho.created_at}}">{{carrinho.created_at}}</time>
+                              </td>
+                              <td class="order-status" style="text-align:left; white-space:nowrap;" ng-if="carrinho.status == 1">
+                                 Aberto					
+                              </td>
+                              <td class="order-status" style="text-align:left; white-space:nowrap;" ng-if="carrinho.status == 2">
+                                 Aguardando pagamento					
+                              </td>
+                               <td class="order-status" style="text-align:left; white-space:nowrap;" ng-if="carrinho.status == 3">
+                                 Fechado					
+                              </td>
+                              <td class="order-total">
+                                 <span class="amount">R$ {{carrinho.total}}</span> for {{carrinho.volumes}} items					
+                              </td>
+                              <td class="order-actions">
+                                 <a href="#!/ver" class="button view">Ver</a>					
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <h2>Meu endereço</h2>
+                     <p class="myaccount_address">
+                        Os endereços seguintes serão usados como padrão.
+                     </p>
+                     <div class="col2-set addresses">
+                        <div class="col-1 address">
+                           <header class="title">
+                              <h3>Endereço de cobrança</h3>
+                              <a href="#" class="edit">Editar</a>
+                           </header>
+                           <address>
+                              Usuario<br>
+                              Rua :{{account.endereco.street}}<br>
+                              Numero :{{account.endereco.number}}<br>
+                              Cep :{{account.endereco.zipcode}}<br>
+                              Cidade :{{account.endereco.city}}<br>
+                              Estado :{{account.endereco.state}}<br>
+                              Telefone :{{account.endereco.phone}}<br>
+                              Brasil		
+                           </address>
+                        </div>
+                        <div class="col-2 address">
+                           <!--header class="title">
+                              <h3>Endereço de entrega</h3>
+                              <a href="https://livedemo00.template-help.com/woocommerce_49014/my-account/edit-address/shipping" class="edit">Editar</a>
+                           </header>
+                           <address>
+                              Daniel Medeiros<br>
+                              Ernesto Brodella<br>
+                              Casa<br>
+                              São Paulo<br>
+                              São Paulo<br>
+                              05359190<br>
+                              Brazil		
+                           </address-->
+                        </div>
+                     </div>
+                  </div>
+                  <div class="clear"></div>
+                  <!--.pagination-->
+               </div>
+               <!--#post-->
+            </div>
+            <div class="span3 sidebar" id="sidebar" data-motopress-type="static-sidebar" data-motopress-sidebar-file="sidebar.php">
+               <div id="search-2" class="widget">
+                  <div class="search-form">
+                     <form id="searchform" method="get" action="#" accept-charset="utf-8">
+                        <input type="text" value="" name="s" id="s" class="search-form_it">
+                        <input type="submit" value="Busca" id="search-submit" class="search-form_is btn btn-primary">
+                     </form>
+                  </div>
+               </div>
+               <div id="my_postwidget-7" class="widget">
+                  <h2>Posts recentes</h2>
+                  <ul class="post-list unstyled">
+                     <li class="post-list_li clearfix">
+                        <figure class="featured-thumbnail thumbnail">
+                           <a href="https://livedemo00.template-help.com/woocommerce_49014/uncategorized/mauris-posuere/" title="Mauris posuere"><img src="https://livedemo00.template-help.com/woocommerce_49014/wp-content/uploads/2012/06/bigstock_Portrait_of_a_cute_lady_12127901-100x100.jpg" alt="Mauris posuere"></a>
+                        </figure>
+                        <time datetime="2013-03-14T20:28">March 14, 2013</time>
+                        <h4 class="post-list_h">
+                           <a href="https://livedemo00.template-help.com/woocommerce_49014/uncategorized/mauris-posuere/" rel="bookmark" title="Permanent Link to Mauris posuere">Mauris posuere</a>
+                        </h4>
+                        <div class="excerpt">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit... 				
+                        </div>
+                        <a href="https://livedemo00.template-help.com/woocommerce_49014/uncategorized/mauris-posuere/" class="btn btn-primary">Read more</a>
+                     </li>
+                     <li class="post-list_li clearfix">
+                        <figure class="featured-thumbnail thumbnail">
+                           <a href="https://livedemo00.template-help.com/woocommerce_49014/blandit/donec-tempor-libero/" title="Donec tempor libero"><img src="https://livedemo00.template-help.com/woocommerce_49014/wp-content/uploads/2012/06/bigstock_Massage_Is_Wonderful_1935435-100x100.jpg" alt="Donec tempor libero"></a>
+                        </figure>
+                        <time datetime="2013-03-05T20:31">March 5, 2013</time>
+                        <h4 class="post-list_h">
+                           <a href="https://livedemo00.template-help.com/woocommerce_49014/blandit/donec-tempor-libero/" rel="bookmark" title="Permanent Link to Donec tempor libero">Donec tempor libero</a>
+                        </h4>
+                        <div class="excerpt">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit... 				
+                        </div>
+                        <a href="https://livedemo00.template-help.com/woocommerce_49014/blandit/donec-tempor-libero/" class="btn btn-primary">Read more</a>
+                     </li>
+                     <li class="post-list_li clearfix">
+                        <figure class="featured-thumbnail thumbnail">
+                           <a href="https://livedemo00.template-help.com/woocommerce_49014/blandit/etiam-dictum-egestas/" title="Etiam dictum egestas"><img src="https://livedemo00.template-help.com/woocommerce_49014/wp-content/uploads/2012/06/bigstock_Fur_Hat_2629611-100x100.jpg" alt="Etiam dictum egestas"></a>
+                        </figure>
+                        <time datetime="2013-02-14T20:26">February 14, 2013</time>
+                        <h4 class="post-list_h">
+                           <a href="https://livedemo00.template-help.com/woocommerce_49014/blandit/etiam-dictum-egestas/" rel="bookmark" title="Permanent Link to Etiam dictum egestas">Etiam dictum egestas</a>
+                        </h4>
+                        <div class="excerpt">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit... 				
+                        </div>
+                        <a href="https://livedemo00.template-help.com/woocommerce_49014/blandit/etiam-dictum-egestas/" class="btn btn-primary">Read more</a>
+                     </li>
+                  </ul>
+                  <!-- Link under post cycle -->
+               </div>
+               <div id="tag_cloud-2" class="widget">
+                  <h2>Tags</h2>
+                  <div class="tagcloud"><a href="https://livedemo00.template-help.com/woocommerce_49014/portfolio_tag/accusantium/" class="tag-link-15" title="2 topics" style="font-size: 12.581818181818pt;">accusantium</a>
+                     <a href="https://livedemo00.template-help.com/woocommerce_49014/portfolio_tag/alias/" class="tag-link-16" title="3 topics" style="font-size: 15.636363636364pt;">alias</a>
+                     <a href="https://livedemo00.template-help.com/woocommerce_49014/portfolio_tag/consectetur/" class="tag-link-17" title="6 topics" style="font-size: 22pt;">consectetur</a>
+                     <a href="https://livedemo00.template-help.com/woocommerce_49014/portfolio_tag/cumque/" class="tag-link-18" title="3 topics" style="font-size: 15.636363636364pt;">cumque</a>
+                     <a href="https://livedemo00.template-help.com/woocommerce_49014/portfolio_tag/oluptatum/" class="tag-link-19" title="1 topic" style="font-size: 8pt;">oluptatum</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
