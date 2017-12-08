@@ -50,6 +50,27 @@ class User extends \AcceptanceTester{
         }
      }
 
+      /**
+     * @Then I should see that message is :arg1
+     */
+     public function iShouldSeeThatMessageIs($arg1)
+     {
+        $nome = "Usuario";
+        $email = "email@teste.com";
+        $senha = "senha123";
+
+        $retorno =\App\Classes\User::create_user($nome, $email, $senha);
+        $retorno =\App\Classes\User::create_user($nome, $email, $senha);
+
+
+        if($retorno['response'] == $arg1){
+            return true;
+        }else{
+        throw new \Error("Não esta retornando o a mensagem certa ".$retorno['response'], 1);
+        }
+        ;
+     }
+
 
 }
 

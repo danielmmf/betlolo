@@ -320,3 +320,7 @@ $app->get('btc', 'BtcsController@index');
  */
 $app->get('original', 'OriginalsController@index');
 $app->get('original/sdk', 'OriginalsController@sdk');
+/**
+ * Routes for resource betlolo
+ */
+$app->get('betlolo', 'BetlolosController@index');
