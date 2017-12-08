@@ -34,9 +34,7 @@
     <!-- endinject -->
 </head>
     
-<body cz-shortcut-listen="true"><script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
-//]]></script><script async="" src="./index_files/browser-sync-client.js"></script>
+<body cz-shortcut-listen="true">
 
     <!-- START HEADER -->
     <header>
