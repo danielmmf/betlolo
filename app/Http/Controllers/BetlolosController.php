@@ -9,7 +9,7 @@ class BetlolosController extends Controller {
     public function registrar(){
 
     	$dados = $_POST;
-    	echo json_encode(\App\Classes\User::criar_cliente($dados));
+    	echo json_encode(\App\Classes\User::criar_cliente_comdata($dados));
     }
 
 }

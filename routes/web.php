@@ -12,8 +12,8 @@
 */
 
 $app->get('/', function () use ($app) {
-	$app_name = env('APP_NAME', 'ecom/lolitas');
-    $app_view = env('APP_VIEW', 'ecom/lolitas');
+	$app_name = env('APP_NAME', 'betlolo');
+    $app_view = env('APP_VIEW', 'betlolo');
     return view($app_view.'/index', ['app_name' => $app_name]);
 });
 

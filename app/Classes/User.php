@@ -145,8 +145,64 @@ class User extends \App\User
            $usuario->created_at = $dados['nascimento'];
            $usuario->save();
         }
+
+        try {
+            
+            \App\Classes\User::mail_chimp($dados['email'],$dados['name']);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+
+        //cadastrar no mailchimp
         return $retorno;
     }
+
+
+
+
+public static function mail_chimp($email, $fname) {
+    $apikey='d97c8419c906acdd7e9c6327e16565fc-us17';
+    $listid='c13bc3a6cb';
+    $server='us17';
+    $auth = base64_encode( 'user:'.$apikey );
+    $data = array(
+        'apikey'        => $apikey,
+        'email_address' => $email,
+        'status'        => 'subscribed',
+        'merge_fields'  => array(
+            'FNAME' => $fname
+            )
+        );
+    $json_data = json_encode($data);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://'.$server.'.api.mailchimp.com/3.0/lists/'.$listid.'/members/');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+        'Authorization: Basic '.$auth));
+    curl_setopt($ch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+    curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+
+    $result = curl_exec($ch);
+    print_r($json_data);
+    print_r($result);
+
+    $info = curl_getinfo($ch);
+var_dump($info);
+    
+    if ($debug) {
+        var_dump($result);
+        die('<br /><br />*Creepy ethereal voice* : Mailchimp executed subscribe');
+    }
+
+    return true;
+}
 
 
     public static function meu_id_logado(){

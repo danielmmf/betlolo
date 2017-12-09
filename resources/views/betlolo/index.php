@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="input-group mb-2">
                                     <div class="input-group-addon"><i class="ion-ios-calendar-outline"></i></div>
-                                    <input type="tel" class="form-control" id="birthDate" name="birthDate" placeholder="Data de nascimento" required="">
+                                    <input type="tel" class="form-control" id="birthDate" name="nascimento" placeholder="Data de nascimento" required="">
                                 </div>
                                 <div class="input-group mb-2">
                                     <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
