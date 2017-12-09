@@ -18,6 +18,13 @@ $app->get('/', function () use ($app) {
 });
 
 
+$app->get('/login', function () use ($app) {
+    $app_name = env('APP_NAME', 'betlolo');
+    $app_view = env('APP_VIEW', 'betlolo');
+    return view($app_view.'/login', ['app_name' => $app_name]);
+});
+
+
 $app->get('/logoff', function () use ($app) {
     session_destroy();
     echo "<script>window.location = '/';</script>";
@@ -325,3 +332,5 @@ $app->get('original/sdk', 'OriginalsController@sdk');
  */
 $app->get('betlolo', 'BetlolosController@index');
 $app->post('betlolo/registrar', 'BetlolosController@registrar');
+$app->post('betlolo/logar', 'BetlolosController@logar');
+$app->get('betlolo/minhapagina', 'BetlolosController@minha');

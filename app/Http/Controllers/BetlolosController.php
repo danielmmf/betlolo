@@ -12,4 +12,24 @@ class BetlolosController extends Controller {
     	echo json_encode(\App\Classes\User::criar_cliente_comdata($dados));
     }
 
+
+     public function logar(){
+
+    	$dados = $_POST;
+    	$usuario = new \App\Classes\User;
+    	$usuario->email = $dados['email'];
+    	$usuario->password = $dados['password'];
+    	$resultado = $usuario->login();
+ 
+    	if($resultado['logado']){
+    		echo "minhapagina";
+			die();
+    	}
+    }
+
+
+    public function minha(){
+    	echo 'minhapagina';
+    }
+
 }
