@@ -87,10 +87,13 @@
                     </div>
 
                     <div class="signup">
-                        <form>
+                        <form id="form_cadastro">
                             <fieldset>
                                 <legend>Cadastrar</legend>
-
+                                <div class="input-group mb-2">
+                                    <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required="">
+                                </div>
                                 <div class="input-group mb-2">
                                     <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
                                     <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required="">
@@ -112,7 +115,7 @@
                                     <input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirmar senha" required="">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary" id="cadastrar">Cadastrar</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -386,4 +389,18 @@
     <script src="./index_files/plugins.min.js"></script>
     <script src="./index_files/main.min.js"></script>
     <!-- endinject -->
+    <script type="text/javascript">
+        
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            $("#cadastrar").on('click', function(){
+                var dados = $("#form_cadastro").serialize();
+                $.post('betlolo/registrar', dados,function( data ) {
+                  alert( data );
+                });
+
+            })
+        });
+
+    </script>
 </body></html>

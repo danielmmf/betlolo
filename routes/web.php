@@ -324,3 +324,4 @@ $app->get('original/sdk', 'OriginalsController@sdk');
  * Routes for resource betlolo
  */
 $app->get('betlolo', 'BetlolosController@index');
+$app->post('betlolo/registrar', 'BetlolosController@registrar');

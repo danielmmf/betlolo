@@ -138,6 +138,16 @@ class User extends \App\User
         return self::create_user($dados['name'],$dados['email'],$dados['password']);
     }
 
+    public static function criar_cliente_comdata($dados){
+        $retorno = \App\Classes\User::criar_cliente($dados);
+        if($retorno['status'] == 1){
+           $usuario = \App\Classes\User::find($retorno['cliente']);
+           $usuario->created_at = $dados['nascimento'];
+           $usuario->save();
+        }
+        return $retorno;
+    }
+
 
     public static function meu_id_logado(){
         if (php_sapi_name() == "cli") {

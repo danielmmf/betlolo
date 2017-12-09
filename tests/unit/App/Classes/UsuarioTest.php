@@ -1,7 +1,7 @@
 <?php
 
 
-class EnderecoTest extends \Codeception\Test\Unit
+class Usuario extends \Codeception\Test\Unit//usuarioTest
 {
     /**
      * @var \UnitTester
@@ -23,6 +23,17 @@ class EnderecoTest extends \Codeception\Test\Unit
         $dados['user_id']=1;
     	$dados['telefone']='31233123';
     	$endereco =  App\Classes\Address::criar($user_id , $dados);
+    }
+
+    public function testDeveCriarUsuarioComDataDeNascimento(){
+
+        $dados['name']="Usuario de teste";
+        $dados['email']="usuario@teste.com";
+        $dados['password']="suariodeteste";
+        $dados['nascimento']='1982-09-21';
+        $retorno = \App\Classes\User::criar_cliente_comdata($dados);
+        $this->assertEquals($retorno['status'] , 1);
+
     }
 
 }

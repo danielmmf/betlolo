@@ -6,4 +6,10 @@ class BetlolosController extends Controller {
     	return view('betlolo/index');
     }
 
+    public function registrar(){
+
+    	$dados = $_POST;
+    	echo json_encode(\App\Classes\User::criar_cliente($dados));
+    }
+
 }
