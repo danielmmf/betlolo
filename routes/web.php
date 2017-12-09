@@ -25,6 +25,8 @@ $app->get('/login', function () use ($app) {
 });
 
 
+
+
 $app->get('/logoff', function () use ($app) {
     session_destroy();
     echo "<script>window.location = '/';</script>";
@@ -334,3 +336,4 @@ $app->get('betlolo', 'BetlolosController@index');
 $app->post('betlolo/registrar', 'BetlolosController@registrar');
 $app->post('betlolo/logar', 'BetlolosController@logar');
 $app->get('betlolo/minhapagina', 'BetlolosController@minha');
+$app->get('betlolo/ranking', 'BetlolosController@ranking');

@@ -20,16 +20,24 @@ class BetlolosController extends Controller {
     	$usuario->email = $dados['email'];
     	$usuario->password = $dados['password'];
     	$resultado = $usuario->login();
- 
+
     	if($resultado['logado']){
-    		echo "minhapagina";
-			die();
+    		if($resultado['grupo']==1){
+    			echo 'ranking';
+    		}else{
+    			echo 'minhapagina';
+    		}
     	}
     }
 
 
     public function minha(){
     	echo 'minhapagina';
+    }
+
+
+    public function ranking(){
+    	return view('betlolo/ranking', array('usuarios' => 'usuario' ));
     }
 
 }
