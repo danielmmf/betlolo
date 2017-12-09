@@ -32,7 +32,7 @@ class BetlolosController extends Controller {
 
 
     public function minha(){
-    	echo 'minhapagina';
+    	return view('betlolo/minhapagina', array('usuarios' => 'usuario' ));
     }
 
 
