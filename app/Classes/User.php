@@ -186,11 +186,11 @@ public static function mail_chimp($email, $fname) {
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-    curl_setopt($ch, CURLOPT_VERBOSE, true);
+    //curl_setopt($ch, CURLOPT_VERBOSE, true);
 
 
     $result = curl_exec($ch);
-    print_r($json_data);
+   /* print_r($json_data);
     print_r($result);
 
     $info = curl_getinfo($ch);
@@ -200,7 +200,7 @@ var_dump($info);
         var_dump($result);
         die('<br /><br />*Creepy ethereal voice* : Mailchimp executed subscribe');
     }
-
+*/
     return true;
 }
 
