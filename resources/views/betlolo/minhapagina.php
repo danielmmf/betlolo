@@ -26,7 +26,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <strong>Minha Pagina Betlolo</strong>
+                        <strong>Minha Pagina Betlolo</strong><a href="/logoff">Logoff</a>
                     </div>
                 </div>
             </div>

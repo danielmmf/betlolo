@@ -32,12 +32,22 @@ class BetlolosController extends Controller {
 
 
     public function minha(){
-    	return view('betlolo/minhapagina', array('usuarios' => 'usuario' ));
+    	if(isset($_SESSION['grupo_logado'])){
+    		return view('betlolo/minhapagina', array('usuarios' => 'usuario' ));
+    	}else{
+    		header("Location: /");
+			die();
+    	}
     }
 
 
     public function ranking(){
-    	return view('betlolo/ranking', array('usuarios' => 'usuario' ));
+    	if(isset($_SESSION['grupo_logado']) && $_SESSION['grupo_logado'] == 1){
+    		return view('betlolo/ranking', array('usuarios' => 'usuario' ));
+    	}else{
+    		header("Location: /");
+			die();
+    	}
     }
 
 }
