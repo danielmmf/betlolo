@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="sampleApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -18,7 +18,7 @@
     <!-- endinject -->
 </head>
     
-<body>
+<body  ng-controller="SampleCtrl">
 
     <!-- START HEADER -->
     <header>
@@ -49,16 +49,16 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">E-mail</th>
-                                        <th scope="col">Data de Nascimento</th>
-                                        <th scope="col">Lolopoints</th>
+                                        <th scope="col">Jogo</th>
+                                        <th scope="col">Data</th>
+                          
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>daniel.belentini@netlolo.com</td>
-                                        <td>16/12/1981</td>
-                                        <td>260</td>
+                                    <tr ng-repeat="(data , ponto) in pontos">
+                                        <td>{{ponto.game}}</td>
+                                        <td>{{ponto.$id}}</td>
+                                       
                                     </tr>
                             
                                     
@@ -105,4 +105,44 @@
     <script src="/dist/js/plugins/plugins.min.js"></script>
     <script src="/dist/js/main.min.js"></script>
     <!-- endinject -->
+
+    <!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+<script>
+  // Initialize the Firebase SDK
+  var config = {
+    apiKey: "AIzaSyBW52g_pZCMNx3z5H_C9a6htwz5tHD9COo",
+    authDomain: "controlblack-6de94.firebaseapp.com",
+    databaseURL: "https://controlblack-6de94.firebaseio.com",
+    projectId: "controlblack-6de94",
+    storageBucket: "controlblack-6de94.appspot.com",
+    messagingSenderId: "957561562013"
+  };
+  firebase.initializeApp(config);
+
+
+  var app = angular.module("sampleApp", ["firebase"]);
+    app.controller("SampleCtrl", function($scope, $firebaseArray) {
+      var ref = firebase.database().ref("betlolo/usuarios/<?php echo $usuario; ?>/");
+      // create a synchronized array
+      $scope.pontos = $firebaseArray(ref);
+      // add new items to the array
+      // the message is automatically added to our Firebase database!
+      $scope.addMessage = function() {
+        $scope.messages.$add({
+          text: $scope.newMessageText
+        });
+      };
+      // click on `index.html` above to see $remove() and $save() in action
+    });
+</script>
+
+    
 </html>

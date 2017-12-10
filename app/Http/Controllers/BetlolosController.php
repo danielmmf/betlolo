@@ -33,7 +33,8 @@ class BetlolosController extends Controller {
 
     public function minha(){
     	if(isset($_SESSION['grupo_logado'])){
-    		return view('betlolo/minhapagina', array('usuarios' => 'usuario' ));
+           $key = md5(strtolower($_SESSION['logado']['email']));
+    		return view('betlolo/minhapagina', array('usuario' => $key  ));
     	}else{
     		header("Location: /");
 			die();

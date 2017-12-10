@@ -15,7 +15,8 @@
         "symfony/yaml": "^3.3",
         "laravel/lumen": "^5.4",
         "league/flysystem": "^1.0",
-        "ext-pdo_sqlite": "*"
+        "ext-pdo_sqlite": "*",
+        "ktamas77/firebase-php": "dev-master"
     },
     "autoload": {
         "psr-4": {
