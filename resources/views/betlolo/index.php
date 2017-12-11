@@ -388,16 +388,39 @@
     <!-- inject:js -->
     <script src="./index_files/plugins.min.js"></script>
     <script src="./index_files/main.min.js"></script>
+    <script src="./js/jquery.mask.js"></script>
     <!-- endinject -->
     <script type="text/javascript">
         
         $( document ).ready(function() {
+
+            
+
+            $('#birthDate').mask('00/00/0000');
+
+            
+            function IsEmail(email) {
+                var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if(!regex.test(email)) {
+                   return false;
+                }else{
+                   return true;
+                }
+              }
+
+
             console.log( "ready!" );
             $("#cadastrar").on('click', function(){
                 var dados = $("#form_cadastro").serialize();
-                $.post('betlolo/registrar', dados,function( data ) {
-                  alert( data );
-                });
+                
+                if(IsEmail($('#email').val())){
+                    $.post('betlolo/registrar', dados,function( data ) {
+                      alert( data );
+                    });
+                }else{
+                    alert("Preencha com email correto");
+                    return false;
+                }
 
             })
         });
