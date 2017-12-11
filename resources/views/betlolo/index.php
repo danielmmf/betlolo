@@ -411,12 +411,14 @@
 
             ///console.log( "ready!" );
             $("#cad").on('click', function(){
-                if($("#birthDate").val() ==""){
-                    alert("Preencha sua data de nascimento");
+                if($("#name").val() ==""){
+                    alert("Preencha seu nome");
                 }
-
                 if($("#password").val() ==""){
                     alert("Preencha sua senha");
+                }
+                if($("#birthDate").val() ==""){
+                    alert("Preencha sua data de nascimento");
                 }
                 var dados = $("#form_cadastro").serialize();
 
@@ -431,56 +433,56 @@
                           }
 
                           // Clique no Botão Cadastrar
-  //$('.form-group .btn-primary').on('click', function(e) {
-   // e.preventDefault;
+                          //$('.form-group .btn-primary').on('click', function(e) {
+                           // e.preventDefault;
 
-    $('html, body').animate({
-        scrollTop: $('#area-02').offset().top - 100
-    }, 500);
+                            $('html, body').animate({
+                                scrollTop: $('#area-02').offset().top - 100
+                            }, 500);
 
-    var output, started, duration, desired;
+                            var output, started, duration, desired;
 
-    duration = 5000;
-    desired = '50';
+                            duration = 5000;
+                            desired = '50';
 
-    output = $('.main-sort');
-    started = new Date().getTime();
+                            output = $('.main-sort');
+                            started = new Date().getTime();
 
-    animationTimer = setInterval(function() {
-        if (output.text().trim() === desired || new Date().getTime() - started > duration) {
-            clearInterval(animationTimer);
-        } else {
-            output.text(
-                20 *(Math.floor(Math.random() * (220-40)/20))
-           );
-        }
-    }, 80);
+                            animationTimer = setInterval(function() {
+                                if (output.text().trim() === desired || new Date().getTime() - started > duration) {
+                                    clearInterval(animationTimer);
+                                } else {
+                                    output.text(
+                                        20 *(Math.floor(Math.random() * (220-40)/20))
+                                   );
+                                }
+                            }, 80);
 
-    var numbers = [160, 200];
-    var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
+                            var numbers = [160, 200];
+                            var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
 
-    function printNumbers() {
-      $(".upper-sort").text(randomNumbers);
-    }
+                            function printNumbers() {
+                              $(".upper-sort").text(randomNumbers);
+                            }
 
-    var result = $(".upper-sort").text(randomNumbers).html();
-    
-    setTimeout(function() {
-      printNumbers(); 
-      $('.main-sort').hide();
-      $('.upper-sort').show();
+                            var result = $(".upper-sort").text(randomNumbers).html();
+                            
+                            setTimeout(function() {
+                              printNumbers(); 
+                              $('.main-sort').hide();
+                              $('.upper-sort').show();
 
-      $('#lolopoints').css('top', lolopoints);
+                              $('#lolopoints').css('top', lolopoints);
 
-      $('#overlay, #lolopoints').delay(200).fadeIn();
+                              $('#overlay, #lolopoints').delay(200).fadeIn();
 
 
-      $('#lolopoints .quant-lolopoints').find('span').text(result);
+                              $('#lolopoints .quant-lolopoints').find('span').text(result);
 
-    }, 5100);
-    
-  });
-//});
+                            }, 5100);
+                            
+                          });
+                        //});
 
 
 
