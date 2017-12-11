@@ -9,6 +9,7 @@
     <!-- Favicon Images -->
     <link rel="icon" href="http://localhost:3000/dist/img/favicon/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="http://localhost:3000/dist/img/favicon/favicon.ico">
+    <script src="//connect.facebook.net/en_US/all.js"></script>
     <meta name="msapplication-TileImage" content="dist/img/favicon/betlolo-icon.ico">
 
     <!-- OG Metas -->
@@ -121,7 +122,7 @@
                         </form>
                     </div>
                     <div class="signup-buttons">
-                        <a href="http://localhost:3000/#" class="btn btn-facebook"><i class="ion-social-facebook"></i> Facebook cadastrar</a>
+                        <a href="#" onClick="loginToFacebook()" class="btn btn-facebook"><i class="ion-social-facebook"></i> Facebook cadastrar</a>
                         <a href="http://localhost:3000/#" class="btn btn-twitter"><i class="ion-social-twitter"></i> Twitter cadastrar</a>
                     </div>
 
@@ -382,10 +383,14 @@
             </div>
         </div>
     </div>
+    <div id="fb-root"></div>
 
     <div id="overlay" style="display: none;"></div>
     
     <!-- inject:js -->
+    
+ 
+    
     <script src="./index_files/plugins.min.js"></script>
     <script src="./index_files/js/main.js"></script>
     <script src="./js/jquery.mask.js"></script>
@@ -412,6 +417,7 @@
 
      var numbers = [160, 200];
      var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
+
              function printNumbers() {
                 alert(randomNumbers)
                   $(".upper-sort").text(randomNumbers);
@@ -419,6 +425,7 @@
 
             console.log( "ready!" );
             $("#cadastrar").on('click', function(){
+                alert("randomNumbers");
                 var dados = $("#form_cadastro").serialize();
 
                 if($("#name").val() ==""){
@@ -499,4 +506,81 @@
         });
 
     </script>
+
+    <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '1923980181200743', // Insert your App ID here
+                    status     : true, // check login status
+                    cookie     : true, // enable cookies to allow the server to access the session
+                    oauth      : true, // enable OAuth 2.0
+                    xfbml      : true  // parse XFBML
+                });
+ 
+                /*** Initialization code here ***/
+ 
+                // Get the users login status
+                FB.getLoginStatus(function(response) {
+                    if (response.authResponse) {
+                        // Logged in and connected user, someone you know
+                        console.log("User is logged in");
+                        loginToFacebook();  // Pass directly to login so we can get the users name and email (at this point we only have the facebook ID)
+                    } else {
+                        // No user session available, someone you dont know
+                        console.log("User is NOT logged in");               
+                        showLogin();
+                    }
+                });
+            };  // End Facebook async login
+ 
+          // Load the SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                d.getElementsByTagName('head')[0].appendChild(js);
+            }(document));
+        </script>       
+ 
+        <script>
+            /*** USER TRIGGERED JS ***/
+            var username = '';
+            var userid = '';
+            var userEmail = ''; 
+ 
+            function loginToFacebook() {
+                console.log('Login to facebook');
+                // Login
+                FB.login(function(response) {
+                    if (response.authResponse) {
+                        console.log('Welcome!  Fetching your information.... ');
+                        FB.api('/me', function(response) {
+                            console.log('Good to see you, ' + response.name + ', ' + response.email + '.');
+                            username = response.name;
+                            userid = response.id;
+                            userEmail = response.email;
+ 
+                            showLobby(response.id, response.name, response.email);
+                        });
+                    } else {
+                        console.log('User cancelled login or did not fully authorize.');
+                        showErrorScreen();
+                    }
+                }, {scope: 'email'});
+            }
+ 
+            function showLogin() {
+                // Get DOM elements to show/hide
+                var lobby = document.getElementById("lobby");  
+                var login = document.getElementById("login");  
+ 
+                lobby.style.display = 'none';  // Show the lobby
+                login.style.display = 'block    ';  // Show the lobby
+            }
+ 
+          
+            function showErrorScreen() {
+                console.log('showErrorScreen');
+            }
+            </script>
 </body></html>
