@@ -115,7 +115,7 @@
                                     <input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirmar senha" required="">
                                 </div>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="cad">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary" id="cadastrar">Cadastrar</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -406,14 +406,21 @@
                 }else{
                    return true;
                 }
-            }
+              }
 
-            function printNumbers() {
-                $(".upper-sort").text(randomNumbers);
-            }
 
-            ///console.log( "ready!" );
-            $("#cad").on('click', function(){
+
+     var numbers = [160, 200];
+     var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
+             function printNumbers() {
+                alert(randomNumbers)
+                  $(".upper-sort").text(randomNumbers);
+                }
+
+            console.log( "ready!" );
+            $("#cadastrar").on('click', function(){
+                var dados = $("#form_cadastro").serialize();
+
                 if($("#name").val() ==""){
                     alert("Preencha seu nome");
                 }
@@ -423,73 +430,60 @@
                 if($("#birthDate").val() ==""){
                     alert("Preencha sua data de nascimento");
                 }
-                var dados = $("#form_cadastro").serialize();
 
                 if(IsEmail($('#email').val())){
 
                     
                     if($('#email').val() == $('#confirmEmail').val()){
                         $.post('betlolo/registrar', dados,function( data ) {
-                          if(data.status == 0){
-                            alert(data.response);
-                          }else{
-                            $('html, body').animate({
-                                scrollTop: $('#area-02').offset().top - 100
-                            }, 500);
+                            if(data.status == 0){
+                                alert( data.response );
+                                return false;
+                            }else{
+                                 $('html, body').animate({
+                                        scrollTop: $('#area-02').offset().top - 100
+                                    }, 500);
 
-                            var output, started, duration, desired;
+                                    var output, started, duration, desired;
 
-                            duration = 5000;
-                            desired = '50';
+                                    duration = 5000;
+                                    desired = '50';
 
-                            output = $('.main-sort');
-                            started = new Date().getTime();
+                                    output = $('.main-sort');
+                                    started = new Date().getTime();
 
-                            animationTimer = setInterval(function() {
-                                if (output.text().trim() === desired || new Date().getTime() - started > duration) {
-                                    clearInterval(animationTimer);
-                                } else {
-                                    output.text(
-                                        20 *(Math.floor(Math.random() * (220-40)/20))
-                                   );
-                                }
-                            }, 80);
+                                    animationTimer = setInterval(function() {
+                                        if (output.text().trim() === desired || new Date().getTime() - started > duration) {
+                                            clearInterval(animationTimer);
+                                        } else {
+                                            output.text(
+                                                20 *(Math.floor(Math.random() * (220-40)/20))
+                                           );
+                                        }
+                                    }, 80);
 
-                            var numbers = [160, 200];
-                            var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
+                                   
 
-                           
-                            var result = $(".upper-sort").text(randomNumbers).html();
-                            
-                            setTimeout(function() {
-                              printNumbers(); 
-                              $('.main-sort').hide();
-                              $('.upper-sort').show();
+                                   
 
-                              $('#lolopoints').css('top', lolopoints);
+                                    var result = $(".upper-sort").text(randomNumbers).html();
+                                    
+                                    setTimeout(function() {
+                                      printNumbers(); 
+                                      $('.main-sort').hide();
+                                      $('.upper-sort').show();
 
-                              $('#overlay, #lolopoints').delay(200).fadeIn();
+                                      $('#lolopoints').css('top', lolopoints);
 
-
-                              $('#lolopoints .quant-lolopoints').find('span').text(result);
-
-                            }, 5100);
-                            
-                          });
-                        //});
-
-                          }
-
-                          // Clique no Botão Cadastrar
-                          //$('.form-group .btn-primary').on('click', function(e) {
-                           // e.preventDefault;
-
-                            
+                                      $('#overlay, #lolopoints').delay(200).fadeIn();
 
 
+                                      $('#lolopoints .quant-lolopoints').find('span').text(result);
 
+                                    }, 5100);
+                            }
 
-                       // });
+                        });
                     }else{
                         alert("Email deve ser igual a confirmação");
                         return false;  
