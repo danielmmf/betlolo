@@ -60,7 +60,7 @@ $(document).ready(function() {
     }
   });
 
-  // Clique no Botão Cadastrar
+  /* Clique no Botão Cadastrar
   $('.form-group .btn-primary').on('click', function(e) {
     e.preventDefault;
 
@@ -112,7 +112,7 @@ $(document).ready(function() {
   });
 });
 
-
+*/
 if ( $(window).width() >= 1024) {
   
   /* jQuery Circular Carousel 0.1 */
