@@ -138,8 +138,7 @@ class User extends \App\User
         if($retorno['status'] == 1){
            $usuario = \App\Classes\User::find($retorno['cliente']);
            $nascimento = explode("/",$dados['nascimento']);
-           print_r($nascimento);
-           $usuario->created_at = $dados[2].'-'.$dados[1]."-".$dados[0];
+           $usuario->created_at = $nascimento[2].'-'.$nascimento[1]."-".$nascimento[0];
            $usuario->save();
         }
 

@@ -406,8 +406,11 @@
                 }else{
                    return true;
                 }
-              }
+            }
 
+            function printNumbers() {
+                $(".upper-sort").text(randomNumbers);
+            }
 
             ///console.log( "ready!" );
             $("#cad").on('click', function(){
@@ -427,15 +430,9 @@
                     
                     if($('#email').val() == $('#confirmEmail').val()){
                         $.post('betlolo/registrar', dados,function( data ) {
-                          alert( data.response );
                           if(data.status == 0){
                             alert(data.response);
-                          }
-
-                          // Clique no Botão Cadastrar
-                          //$('.form-group .btn-primary').on('click', function(e) {
-                           // e.preventDefault;
-
+                          }else{
                             $('html, body').animate({
                                 scrollTop: $('#area-02').offset().top - 100
                             }, 500);
@@ -461,10 +458,7 @@
                             var numbers = [160, 200];
                             var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
 
-                            function printNumbers() {
-                              $(".upper-sort").text(randomNumbers);
-                            }
-
+                           
                             var result = $(".upper-sort").text(randomNumbers).html();
                             
                             setTimeout(function() {
@@ -484,6 +478,13 @@
                           });
                         //});
 
+                          }
+
+                          // Clique no Botão Cadastrar
+                          //$('.form-group .btn-primary').on('click', function(e) {
+                           // e.preventDefault;
+
+                            
 
 
 
