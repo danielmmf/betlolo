@@ -115,7 +115,7 @@
                                     <input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirmar senha" required="">
                                 </div>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="cadastrar">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary" id="cad">Cadastrar</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -410,13 +410,22 @@
 
 
             console.log( "ready!" );
-            $("#cadastrar").on('click', function(){
+            $("#cad").on('click', function(){
                 var dados = $("#form_cadastro").serialize();
-                
+
                 if(IsEmail($('#email').val())){
-                    $.post('betlolo/registrar', dados,function( data ) {
-                      alert( data );
-                    });
+
+                    
+                    if($('#email').val() == $('#confirmEmail').val()){
+                        $.post('betlolo/registrar', dados,function( data ) {
+                          alert( data );
+                        });
+                    }else{
+                        alert("Email deve ser igual a confirmação");
+                        return false;  
+                    }
+
+                        
                 }else{
                     alert("Preencha com email correto");
                     return false;
