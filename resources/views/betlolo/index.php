@@ -409,11 +409,18 @@
               }
 
 
-            console.log( "ready!" );
+            ///console.log( "ready!" );
             $("#cad").on('click', function(){
+                if($("#birthDate").val() ==""){
+                    alert("Preencha sua data de nascimento");
+                }
+
+                if($("#password").val() ==""){
+                    alert("Preencha sua senha");
+                }
                 var dados = $("#form_cadastro").serialize();
 
-                if(IsEmail($('#email').val())){
+                if(IsEmail($('#bi').val())){
 
                     
                     if($('#email').val() == $('#confirmEmail').val()){
