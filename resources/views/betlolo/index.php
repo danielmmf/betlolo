@@ -422,7 +422,7 @@
                 }
                 var dados = $("#form_cadastro").serialize();
 
-                if(IsEmail($('#bi').val())){
+                if(IsEmail($('#email').val())){
 
                     
                     if($('#email').val() == $('#confirmEmail').val()){

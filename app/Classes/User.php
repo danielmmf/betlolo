@@ -105,9 +105,6 @@ class User extends \App\User
         }
 
 
-
-
-
         return $resp;
     }
 
@@ -133,8 +130,6 @@ class User extends \App\User
             return $resp;
         }
 
-        
-
         return self::create_user($dados['name'],$dados['email'],$dados['password']);
     }
 
@@ -143,17 +138,16 @@ class User extends \App\User
         if($retorno['status'] == 1){
            $usuario = \App\Classes\User::find($retorno['cliente']);
            $nascimento = explode("/",$dados['nascimento']);
+           print_r($nascimento);
            $usuario->created_at = $dados[2].'-'.$dados[1]."-".$dados[0];
            $usuario->save();
         }
 
-            try {
-                \App\Classes\User::mail_chimp($dados['email'],$dados['name']);
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }
-
-
+        try {
+            \App\Classes\User::mail_chimp($dados['email'],$dados['name']);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
         //cadastrar no mailchimp
         return $retorno;
     }
