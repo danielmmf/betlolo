@@ -59,7 +59,7 @@
                                     <tr ng-repeat="(c , p) in ponto">
                                         <td>{{p.email}}</td>
                                         <td>{{c}}</td>
-                                        <td>260</td>
+                                        <td>{{p.pontuacao}}</td>
                                     </tr>
                                  </tbody>
                             </table>

@@ -340,3 +340,4 @@ $app->post('betlolo/registrar', 'BetlolosController@registrar');
 $app->post('betlolo/logar', 'BetlolosController@logar');
 $app->get('betlolo/minhapagina', 'BetlolosController@minha');
 $app->get('betlolo/ranking', 'BetlolosController@ranking');
+$app->get('betlolo/indicacao', 'BetlolosController@indicacao');

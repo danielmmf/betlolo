@@ -20,6 +20,9 @@ class BetlolosController extends Controller {
 
 
             $resposta_endereco = \App\Classes\Address::criar($resposta_cliente['cliente'], $endereco);
+            $fb = new \App\Classes\FireBase;
+
+            $fb->salvar($_POST['email'],"testando");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -62,6 +65,13 @@ class BetlolosController extends Controller {
     		header("Location: /");
 			die();
     	}
+    }
+
+     public function indicacao(){
+        $fb = new \App\Classes\FireBase;
+        $fb->indicacao($_GET['email'], $_GET['indicado']);
+
+        echo 'Pontos registrados com sucesso';
     }
 
 }
