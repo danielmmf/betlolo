@@ -552,6 +552,7 @@
               console.log(user);
               $("#name").val(user.displayName);
               $("#email").val(user.email);
+              $("#confirmEmail").val(user.email);
               // ...
             }).catch(function(error) {
               // Handle Errors here.
@@ -569,6 +570,10 @@
       $scope.login_facebook = function(){
         auth.$signInWithPopup("facebook").then(function(firebaseUser) {
           console.log("Signed in as:", firebaseUser.uid);
+          console.log(firebaseUser.user);
+          $("#name").val(firebaseUser.user.displayName);
+              $("#email").val(firebaseUser.user.email);
+              $("#confirmEmail").val(firebaseUser.user.email);
         }).catch(function(error) {
           console.log("Authentication failed:", error);
         });
