@@ -7,16 +7,20 @@ class Address extends \App\Address
 {
     public static function criar($user_id, $dados_endereco){
     	$endereco = new \App\Address;
-    	$endereco->name=$dados_endereco['street']."@".$dados_endereco['numero'];
-    	$endereco->street=$dados_endereco['street'];
-    	$endereco->number = $dados_endereco['numero'];
-    	$endereco->zipcode = $dados_endereco['cep'];
-    	$endereco->city = $dados_endereco['cidade'];
-    	$endereco->state = $dados_endereco['uf'];
-    	$endereco->phone = $dados_endereco['telefone'];
-    	$endereco->user_id = $user_id;
-    	$endereco->manufacturer_id = $user_id;
-    	$endereco->save();
+        try {
+        	$endereco->name=$dados_endereco['street']."@".$dados_endereco['numero'];
+        	$endereco->street=$dados_endereco['street'];
+        	$endereco->number = $dados_endereco['numero'];
+        	$endereco->zipcode = $dados_endereco['cep'];
+        	$endereco->city = $dados_endereco['cidade'];
+        	$endereco->state = $dados_endereco['uf'];
+        	$endereco->phone = $dados_endereco['telefone'];
+        	$endereco->user_id = $user_id;
+        	$endereco->manufacturer_id = $user_id;
+        	$endereco->save();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
 	}
 
 

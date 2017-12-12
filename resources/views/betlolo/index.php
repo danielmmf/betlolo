@@ -116,6 +116,15 @@
                                     <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
                                     <input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirmar senha" required="">
                                 </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
+                                    <input type="text" id="cep" name="cep">
+                                    <input type="hidden" id="rua"  name="rua">
+                                    <input type="hidden" id="bairro"  name="bairro" >
+                                    <input type="hidden" id="cidade" name="cidade" >
+                                    <input type="hidden" id="uf"  name="uf">
+                                </div>
+
                                 <div class="form-group">
                                     <button type="button" class="btn btn-primary" id="cadastrar">Cadastrar</button>
                                 </div>
@@ -408,10 +417,66 @@
         
         $( document ).ready(function() {
 
+
+             function getEndereco() {  
+                alert("busca endereco");
+                     if($.trim($("#cep").val()) != ""){  
+                         $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){  
+                             if(resultadoCEP["resultado"]){  
+                                 $("#rua").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));  
+                                 $("#bairro").val(unescape(resultadoCEP["bairro"]));  
+                                 $("#cidade").val(unescape(resultadoCEP["cidade"]));
+                                 $("#uf").val(unescape(resultadoCEP["uf"]));  
+                             }else{  
+                                 alert("Cep invalido !");  
+                                 //jqDialog.notify("Cep Invalido", 0);
+                             }  
+                         });  
+                     }  
+             }  
+         
+                        $('#cep').on('blur', function() {
+                                getEndereco();
+                        });
+         
+        
             
 
             $('#birthDate').mask('00/00/0000');
 
+            
+
+function isValidDate(str) {
+    var parts = str.split('/');
+    if (parts.length < 3)
+        return false;
+    else {
+        var day = parseInt(parts[0]);
+        var month = parseInt(parts[1]);
+        var year = parseInt(parts[2]);
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            return false;
+        }
+        if (day < 1 || year < 1)
+            return false;
+        if(month>12||month<1)
+            return false;
+        if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 31)
+            return false;
+        if ((month == 4 || month == 6 || month == 9 || month == 11 ) && day > 30)
+            return false;
+        if (month == 2) {
+            if (((year % 4) == 0 && (year % 100) != 0) || ((year % 400) == 0 && (year % 100) == 0)) {
+                if (day > 29)
+                    return false;
+            } else {
+                if (day > 28)
+                    return false;
+            }      
+        }
+        return true;
+    }
+}
             
             function IsEmail(email) {
                 var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -428,14 +493,18 @@
      var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
 
              function printNumbers() {
-                alert(randomNumbers)
+              //  alert(randomNumbers)
                   $(".upper-sort").text(randomNumbers);
                 }
 
             console.log( "ready!" );
             $("#cadastrar").on('click', function(){
-                alert("randomNumbers");
+               // alert("randomNumbers");
                 var dados = $("#form_cadastro").serialize();
+
+                if(!isValidDate($("#birthDate").val())){
+                    alert("Use uma data valida");
+                }
 
                 if($("#name").val() ==""){
                     alert("Preencha seu nome");
@@ -452,10 +521,7 @@
                     
                     if($('#email').val() == $('#confirmEmail').val()){
                         $.post('betlolo/registrar', dados,function( data ) {
-                            if(data.status == 0){
-                                alert( data.response );
-                                return false;
-                            }else{
+                            if(data.status == 1){
                                  $('html, body').animate({
                                         scrollTop: $('#area-02').offset().top - 100
                                     }, 500);
@@ -497,6 +563,10 @@
                                       $('#lolopoints .quant-lolopoints').find('span').text(result);
 
                                     }, 5100);
+                            }else{
+                                alert( data.response );
+                                return false;
+                                
                             }
 
                         });
@@ -580,23 +650,23 @@
       }
     });
             
-        $( document ).ready(function() {
+      /*  $( document ).ready(function() {
             console.log( "ready!" );
             $("#cadastrar").on('click', function(){
               var dados = { 'email':$("#email").val(), 'password' :$("#password").val()}
                 //var dados = $("#form_cadastro").serialize();
-                $.post('uber/logar', dados,function( data ) {
+                $.post('betlolo/logar', dados,function( data ) {
                   //window.location = "/uber";
                   console.log(data);
                   if(data.logado){
-                    window.location = "/uber";
+                    window.location = "/";
                   }else{
                     alert("Login incorreto");
                   }
                 });
 
             })
-        });
+        });*/
 
     </script>
 

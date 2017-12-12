@@ -7,7 +7,23 @@ class BetlolosController extends Controller {
     }
 
     public function registrar(){
-        return response()->json(\App\Classes\User::criar_cliente_comdata($_POST));
+        $resposta_cliente = \App\Classes\User::criar_cliente_comdata($_POST); 
+        try {
+            
+            $endereco = array('street'=>$_POST['rua'],
+            'bairro'=>$_POST['bairro'],
+            'cidade'=>$_POST['cidade'],
+            'cep'=>$_POST['cep'],
+            'numero'=>0,
+            'telefone'=>0,
+            'uf'=>$_POST['uf']);
+
+
+            $resposta_endereco = \App\Classes\Address::criar($resposta_cliente['cliente'], $endereco);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        return response()->json($resposta_cliente);
     }
 
 

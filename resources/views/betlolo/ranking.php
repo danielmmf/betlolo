@@ -54,15 +54,13 @@
                                         <th scope="col">Lolopoints</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                               
-                                    <tr ng-repeat="d in pontos">
-                                        <td>{{d}}</td>
-                                        <td>16/12/1981</td>
+                                <tbody ng-repeat="(chave , ponto) in pontos">
+                                    
+                                    <tr ng-repeat="(c , p) in ponto">
+                                        <td>{{p.email}}</td>
+                                        <td>{{c}}</td>
                                         <td>260</td>
                                     </tr>
-                              
-                                    
                                  </tbody>
                             </table>
 
