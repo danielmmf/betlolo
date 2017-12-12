@@ -308,6 +308,9 @@ $app->get('shop/imagem', 'ShopController@imagem');
  * Routes for resource uber
  */
 $app->get('uber', 'UbersController@index');
+$app->get('uber/registrar', 'UbersController@registrar');
+$app->post('uber/cadastrar', 'UbersController@cadastrar');
+$app->post('uber/logar', 'UbersController@logar');
 
 
 /**

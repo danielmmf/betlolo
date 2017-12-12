@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0022)http://localhost:3000/ -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="pt-BR" ng-app="sampleApp">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -35,7 +36,7 @@
     <!-- endinject -->
 </head>
     
-<body cz-shortcut-listen="true">
+<body cz-shortcut-listen="true"  ng-controller="SampleCtrl">
 
     <!-- START HEADER -->
     <header>
@@ -122,8 +123,8 @@
                         </form>
                     </div>
                     <div class="signup-buttons">
-                        <a href="#" onClick="loginToFacebook()" class="btn btn-facebook"><i class="ion-social-facebook"></i> Facebook cadastrar</a>
-                        <a href="http://localhost:3000/#" class="btn btn-twitter"><i class="ion-social-twitter"></i> Twitter cadastrar</a>
+                        <a href="#"  ng-click="login_facebook()" class="btn btn-facebook"><i class="ion-social-facebook"></i> Facebook cadastrar</a>
+                        <a href="#" class="btn btn-twitter" ng-click="login_twitter()" ><i class="ion-social-twitter"></i> Twitter cadastrar</a>
                     </div>
 
                     <i class="ion-chevron-down"></i>
@@ -383,10 +384,18 @@
             </div>
         </div>
     </div>
-    <div id="fb-root"></div>
+
 
     <div id="overlay" style="display: none;"></div>
     
+    <!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <!-- inject:js -->
     
  
@@ -506,81 +515,80 @@
         });
 
     </script>
+    <!-- jQuery Library -->
 
-    <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId      : '1923980181200743', // Insert your App ID here
-                    status     : true, // check login status
-                    cookie     : true, // enable cookies to allow the server to access the session
-                    oauth      : true, // enable OAuth 2.0
-                    xfbml      : true  // parse XFBML
+
+
+<script>
+  // Initialize the Firebase SDK
+  var config = {
+    apiKey: "AIzaSyBW52g_pZCMNx3z5H_C9a6htwz5tHD9COo",
+    authDomain: "controlblack-6de94.firebaseapp.com",
+    databaseURL: "https://controlblack-6de94.firebaseio.com",
+    projectId: "controlblack-6de94",
+    storageBucket: "controlblack-6de94.appspot.com",
+    messagingSenderId: "957561562013"
+  };
+  firebase.initializeApp(config);
+</script>
+    <script type="text/javascript">
+    var app = angular.module("sampleApp", ["firebase"]);
+
+    app.controller("SampleCtrl", function($scope, $firebaseAuth) {
+      var auth = $firebaseAuth();
+
+      var provider = new firebase.auth.TwitterAuthProvider();
+
+        $scope.login_twitter = function(){
+              firebase.auth().signInWithPopup(provider).then(function(result) {
+              // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+              // You can use these server side with your app's credentials to access the Twitter API.
+              var token = result.credential.accessToken;
+              var secret = result.credential.secret;
+              // The signed-in user info.
+              var user = result.user;
+              // ...
+            }).catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+            });
+        };
+
+      // login with Facebook
+      $scope.login_facebook = function(){
+        auth.$signInWithPopup("facebook").then(function(firebaseUser) {
+          console.log("Signed in as:", firebaseUser.uid);
+        }).catch(function(error) {
+          console.log("Authentication failed:", error);
+        });
+      }
+    });
+            
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            $("#cadastrar").on('click', function(){
+              var dados = { 'email':$("#email").val(), 'password' :$("#password").val()}
+                //var dados = $("#form_cadastro").serialize();
+                $.post('uber/logar', dados,function( data ) {
+                  //window.location = "/uber";
+                  console.log(data);
+                  if(data.logado){
+                    window.location = "/uber";
+                  }else{
+                    alert("Login incorreto");
+                  }
                 });
+
+            })
+        });
+
+    </script>
+
  
-                /*** Initialization code here ***/
- 
-                // Get the users login status
-                FB.getLoginStatus(function(response) {
-                    if (response.authResponse) {
-                        // Logged in and connected user, someone you know
-                        console.log("User is logged in");
-                        loginToFacebook();  // Pass directly to login so we can get the users name and email (at this point we only have the facebook ID)
-                    } else {
-                        // No user session available, someone you dont know
-                        console.log("User is NOT logged in");               
-                        showLogin();
-                    }
-                });
-            };  // End Facebook async login
- 
-          // Load the SDK Asynchronously
-            (function(d){
-                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-                js = d.createElement('script'); js.id = id; js.async = true;
-                js.src = "//connect.facebook.net/en_US/all.js";
-                d.getElementsByTagName('head')[0].appendChild(js);
-            }(document));
-        </script>       
- 
-        <script>
-            /*** USER TRIGGERED JS ***/
-            var username = '';
-            var userid = '';
-            var userEmail = ''; 
- 
-            function loginToFacebook() {
-                console.log('Login to facebook');
-                // Login
-                FB.login(function(response) {
-                    if (response.authResponse) {
-                        console.log('Welcome!  Fetching your information.... ');
-                        FB.api('/me', function(response) {
-                            console.log('Good to see you, ' + response.name + ', ' + response.email + '.');
-                            username = response.name;
-                            userid = response.id;
-                            userEmail = response.email;
- 
-                            showLobby(response.id, response.name, response.email);
-                        });
-                    } else {
-                        console.log('User cancelled login or did not fully authorize.');
-                        showErrorScreen();
-                    }
-                }, {scope: 'email'});
-            }
- 
-            function showLogin() {
-                // Get DOM elements to show/hide
-                var lobby = document.getElementById("lobby");  
-                var login = document.getElementById("login");  
- 
-                lobby.style.display = 'none';  // Show the lobby
-                login.style.display = 'block    ';  // Show the lobby
-            }
- 
-          
-            function showErrorScreen() {
-                console.log('showErrorScreen');
-            }
-            </script>
 </body></html>

@@ -11,8 +11,7 @@ class BetlolosController extends Controller {
     }
 
 
-     public function logar(){
-
+    public function logar(){
     	$dados = $_POST;
     	$usuario = new \App\Classes\User;
     	$usuario->email = $dados['email'];
@@ -31,8 +30,8 @@ class BetlolosController extends Controller {
 
     public function minha(){
     	if(isset($_SESSION['grupo_logado'])){
-           $key = md5(strtolower($_SESSION['logado']['email']));
-    		return view('betlolo/minhapagina', array('usuario' => $key  ));
+            $key = md5(strtolower($_SESSION['logado']['email']));
+    	   return view('betlolo/minhapagina', array('usuario' => $key  ));
     	}else{
     		header("Location: /");
 			die();

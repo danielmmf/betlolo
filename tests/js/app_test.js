@@ -1,7 +1,7 @@
 
 Feature('App');
 
-Scenario('test something', (I) => {
+Scenario('testando a url padrao de app', (I) => {
 	I.amOnPage('/app');
   	I.see('Bem vindo vem do angular');
 });
