@@ -547,6 +547,11 @@
               var secret = result.credential.secret;
               // The signed-in user info.
               var user = result.user;
+
+              console.log(result);
+              console.log(user);
+              $("#name").val(user.displayName);
+              $("#email").val(user.email);
               // ...
             }).catch(function(error) {
               // Handle Errors here.
