@@ -489,6 +489,14 @@
 
 
             $("#cadastrar").on('click', function(){
+
+
+                var cep = document.getElementById('cep').value;
+                 if (cep.length < 9) {
+                    alert("Preencha o cep corretamente");
+                   return false; // keep form from submitting
+                 }
+
                 var dados = $("#form_cadastro").serialize();
 
                 if(!isValidDate($("#birthDate").val())){
@@ -514,12 +522,7 @@
                     return false;
                 }
 
-                var cep = document.getElementById('cep').value;
-                 if (cep.length < 8) {
-                    alert("Preencha o cep corretamente");
-                   return false; // keep form from submitting
-                 }
-
+                
                 if(IsEmail($('#email').val())){
 
                     
