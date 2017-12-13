@@ -43,7 +43,7 @@
                         <div class="card-body">
                             <h2>Listagem de cadastros</h2>
 
-                            <p><strong>Qtd. de cadastros:</strong> 10.000</p>
+                            <p><strong>Qtd. de cadastros:</strong> {{pontos.length}}</p>
                             <p><strong>Idade média usuários:</strong> 25</p>
                             
                             <table class="table table-hover">
@@ -54,12 +54,12 @@
                                         <th scope="col">Lolopoints</th>
                                     </tr>
                                 </thead>
-                                <tbody ng-repeat="(chave , ponto) in pontos">
+                                <tbody >
                                     
-                                    <tr ng-repeat="(c , p) in ponto">
-                                        <td>{{p.email}}</td>
-                                        <td>{{c}}</td>
-                                        <td>{{p.pontuacao}}</td>
+                                    <tr ng-repeat="(chave , ponto) in pontos">
+                                        <td>{{ponto.cadastro.email}}</td>
+                                        <td>{{ponto.cadastro.nascimento}}</td>
+                                        <td>{{ponto.cadastro.pontuacao + ponto.indicacao.pontuacao}}</td>
                                     </tr>
                                  </tbody>
                             </table>

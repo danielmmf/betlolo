@@ -22,7 +22,7 @@ class BetlolosController extends Controller {
             $resposta_endereco = \App\Classes\Address::criar($resposta_cliente['cliente'], $endereco);
             $fb = new \App\Classes\FireBase;
 
-            $fb->salvar($_POST['email'],"testando");
+            $fb->salvar($_POST['email'],$_POST['nascimento']);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

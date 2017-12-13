@@ -2,12 +2,13 @@
 namespace App\Classes;
 
 class  FireBase{
-	public function salvar( $email, $game){
+	public function salvar( $email, $nascimento){
 		$key = md5(strtolower($email));
 		$dateTime = new \DateTime();
 
 		$dados = array(
 	    	"game" => "cadastro",
+	    	"nascimento" => $nascimento,
 	    	"hora" => $dateTime->format('c'),
 	    	"email" => $email,
 	    	"pontuacao" => 200
