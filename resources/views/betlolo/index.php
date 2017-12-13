@@ -514,6 +514,12 @@
                     return false;
                 }
 
+                var cep = document.getElementById('cep').value;
+                 if (cep.length < 8) {
+                    alert("Preencha o cep corretamente");
+                   return false; // keep form from submitting
+                 }
+
                 if(IsEmail($('#email').val())){
 
                     
