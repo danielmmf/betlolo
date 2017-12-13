@@ -432,6 +432,7 @@
             
 
             $('#birthDate').mask('00/00/0000');
+            $('#cep').mask('00000-000');
 
             
 
@@ -497,6 +498,11 @@
 
                 if($("#name").val() ==""){
                     alert("Preencha seu nome");
+                    return false;
+                }
+
+                if($("#cep").val() ==""){
+                    alert("Preencha seu cep");
                     return false;
                 }
                 if($("#password").val() ==""){
