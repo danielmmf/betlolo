@@ -69,7 +69,7 @@ class BetlolosController extends Controller {
 
      public function indicacao(){
         $fb = new \App\Classes\FireBase;
-        $fb->indicacao($_GET['email'], $_GET['indicado']);
+        $fb->indicacao($_GET['email']);
 
         echo 'Pontos registrados com sucesso';
     }

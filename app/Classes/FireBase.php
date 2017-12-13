@@ -19,11 +19,11 @@ class  FireBase{
 
 		$firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
 
-		$firebase->set($DEFAULT_PATH . '/usuarios/'.$key.'/'.$dateTime->format('c'), $dados);
+		$firebase->set($DEFAULT_PATH . '/usuarios/'.$key.'/cadastro', $dados);
 	}
 
 
-	public function indicacao( $email, $game){
+	public function indicacao( $email){
 		$key = md5(strtolower($email));
 		$dateTime = new \DateTime();
 
@@ -39,7 +39,7 @@ class  FireBase{
 		$DEFAULT_PATH = 'betlolo';
 
 		$firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
-		$firebase->set($DEFAULT_PATH . '/usuarios/'.$key.'/'.$dateTime->format('c'), $dados);
+		$firebase->set($DEFAULT_PATH . '/usuarios/'.$key.'/indicacao', $dados);
 	}
 
 
