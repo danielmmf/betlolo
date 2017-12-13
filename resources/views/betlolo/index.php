@@ -393,22 +393,14 @@
             </div>
         </div>
     </div>
-
-
     <div id="overlay" style="display: none;"></div>
-    
     <!-- Angular -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
-
-<!-- AngularFire -->
-<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <!-- inject:js -->
-    
- 
-    
     <script src="./index_files/plugins.min.js"></script>
     <script src="./index_files/js/main.js"></script>
     <script src="./js/jquery.mask.js"></script>
@@ -416,28 +408,25 @@
     <script type="text/javascript">
         
         $( document ).ready(function() {
-
-
-             function getEndereco() {  
-                alert("busca endereco");
-                     if($.trim($("#cep").val()) != ""){  
-                         $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){  
-                             if(resultadoCEP["resultado"]){  
-                                 $("#rua").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));  
-                                 $("#bairro").val(unescape(resultadoCEP["bairro"]));  
-                                 $("#cidade").val(unescape(resultadoCEP["cidade"]));
-                                 $("#uf").val(unescape(resultadoCEP["uf"]));  
-                             }else{  
-                                 alert("Cep invalido !");  
-                                 //jqDialog.notify("Cep Invalido", 0);
-                             }  
-                         });  
-                     }  
+            function getEndereco() {  
+                 if($.trim($("#cep").val()) != ""){  
+                     $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){  
+                         if(resultadoCEP["resultado"]){  
+                             $("#rua").val(unescape(resultadoCEP["tipo_logradouro"])+" "+unescape(resultadoCEP["logradouro"]));  
+                             $("#bairro").val(unescape(resultadoCEP["bairro"]));  
+                             $("#cidade").val(unescape(resultadoCEP["cidade"]));
+                             $("#uf").val(unescape(resultadoCEP["uf"]));  
+                         }else{  
+                             alert("Cep invalido !");  
+                             //jqDialog.notify("Cep Invalido", 0);
+                         }  
+                     });  
+                 }  
              }  
          
-                        $('#cep').on('blur', function() {
-                                getEndereco();
-                        });
+            $('#cep').on('blur', function() {
+                    getEndereco();
+            });
          
         
             
@@ -446,37 +435,37 @@
 
             
 
-function isValidDate(str) {
-    var parts = str.split('/');
-    if (parts.length < 3)
-        return false;
-    else {
-        var day = parseInt(parts[0]);
-        var month = parseInt(parts[1]);
-        var year = parseInt(parts[2]);
-        if (isNaN(day) || isNaN(month) || isNaN(year)) {
-            return false;
-        }
-        if (day < 1 || year < 1)
-            return false;
-        if(month>12||month<1)
-            return false;
-        if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 31)
-            return false;
-        if ((month == 4 || month == 6 || month == 9 || month == 11 ) && day > 30)
-            return false;
-        if (month == 2) {
-            if (((year % 4) == 0 && (year % 100) != 0) || ((year % 400) == 0 && (year % 100) == 0)) {
-                if (day > 29)
+            function isValidDate(str) {
+                var parts = str.split('/');
+                if (parts.length < 3)
                     return false;
-            } else {
-                if (day > 28)
-                    return false;
-            }      
-        }
-        return true;
-    }
-}
+                else {
+                    var day = parseInt(parts[0]);
+                    var month = parseInt(parts[1]);
+                    var year = parseInt(parts[2]);
+                    if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                        return false;
+                    }
+                    if (day < 1 || year < 1)
+                        return false;
+                    if(month>12||month<1)
+                        return false;
+                    if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 31)
+                        return false;
+                    if ((month == 4 || month == 6 || month == 9 || month == 11 ) && day > 30)
+                        return false;
+                    if (month == 2) {
+                        if (((year % 4) == 0 && (year % 100) != 0) || ((year % 400) == 0 && (year % 100) == 0)) {
+                            if (day > 29)
+                                return false;
+                        } else {
+                            if (day > 28)
+                                return false;
+                        }      
+                    }
+                    return true;
+                }
+            }
             
             function IsEmail(email) {
                 var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -489,31 +478,34 @@ function isValidDate(str) {
 
 
 
-     var numbers = [160, 200];
-     var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
+             var numbers = [160, 200];
+             var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
 
              function printNumbers() {
               //  alert(randomNumbers)
                   $(".upper-sort").text(randomNumbers);
                 }
 
-            console.log( "ready!" );
+
             $("#cadastrar").on('click', function(){
-               // alert("randomNumbers");
                 var dados = $("#form_cadastro").serialize();
 
                 if(!isValidDate($("#birthDate").val())){
                     alert("Use uma data valida");
+                    return false;
                 }
 
                 if($("#name").val() ==""){
                     alert("Preencha seu nome");
+                    return false;
                 }
                 if($("#password").val() ==""){
                     alert("Preencha sua senha");
+                    return false;
                 }
                 if($("#birthDate").val() ==""){
                     alert("Preencha sua data de nascimento");
+                    return false;
                 }
 
                 if(IsEmail($('#email').val())){
@@ -584,57 +576,51 @@ function isValidDate(str) {
             })
         });
 
-    </script>
-    <!-- jQuery Library -->
 
+      // Initialize the Firebase SDK
+      var config = {
+        apiKey: "AIzaSyBW52g_pZCMNx3z5H_C9a6htwz5tHD9COo",
+        authDomain: "controlblack-6de94.firebaseapp.com",
+        databaseURL: "https://controlblack-6de94.firebaseio.com",
+        projectId: "controlblack-6de94",
+        storageBucket: "controlblack-6de94.appspot.com",
+        messagingSenderId: "957561562013"
+      };
+      firebase.initializeApp(config);
 
-
-<script>
-  // Initialize the Firebase SDK
-  var config = {
-    apiKey: "AIzaSyBW52g_pZCMNx3z5H_C9a6htwz5tHD9COo",
-    authDomain: "controlblack-6de94.firebaseapp.com",
-    databaseURL: "https://controlblack-6de94.firebaseio.com",
-    projectId: "controlblack-6de94",
-    storageBucket: "controlblack-6de94.appspot.com",
-    messagingSenderId: "957561562013"
-  };
-  firebase.initializeApp(config);
-</script>
-    <script type="text/javascript">
     var app = angular.module("sampleApp", ["firebase"]);
 
     app.controller("SampleCtrl", function($scope, $firebaseAuth) {
-      var auth = $firebaseAuth();
+    var auth = $firebaseAuth();
 
-      var provider = new firebase.auth.TwitterAuthProvider();
+    var provider = new firebase.auth.TwitterAuthProvider();
 
-        $scope.login_twitter = function(){
-              firebase.auth().signInWithPopup(provider).then(function(result) {
-              // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
-              // You can use these server side with your app's credentials to access the Twitter API.
-              var token = result.credential.accessToken;
-              var secret = result.credential.secret;
-              // The signed-in user info.
-              var user = result.user;
+    $scope.login_twitter = function(){
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+        // You can use these server side with your app's credentials to access the Twitter API.
+        var token = result.credential.accessToken;
+        var secret = result.credential.secret;
+        // The signed-in user info.
+        var user = result.user;
 
-              console.log(result);
-              console.log(user);
-              $("#name").val(user.displayName);
-              $("#email").val(user.email);
-              $("#confirmEmail").val(user.email);
-              // ...
-            }).catch(function(error) {
-              // Handle Errors here.
-              var errorCode = error.code;
-              var errorMessage = error.message;
-              // The email of the user's account used.
-              var email = error.email;
-              // The firebase.auth.AuthCredential type that was used.
-              var credential = error.credential;
-              // ...
-            });
-        };
+        console.log(result);
+        console.log(user);
+        $("#name").val(user.displayName);
+        $("#email").val(user.email);
+        $("#confirmEmail").val(user.email);
+        // ...
+    }).catch(function(error) {
+        // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+        // ...
+        });
+    };
 
       // login with Facebook
       $scope.login_facebook = function(){
@@ -650,23 +636,7 @@ function isValidDate(str) {
       }
     });
             
-      /*  $( document ).ready(function() {
-            console.log( "ready!" );
-            $("#cadastrar").on('click', function(){
-              var dados = { 'email':$("#email").val(), 'password' :$("#password").val()}
-                //var dados = $("#form_cadastro").serialize();
-                $.post('betlolo/logar', dados,function( data ) {
-                  //window.location = "/uber";
-                  console.log(data);
-                  if(data.logado){
-                    window.location = "/";
-                  }else{
-                    alert("Login incorreto");
-                  }
-                });
 
-            })
-        });*/
 
     </script>
 
