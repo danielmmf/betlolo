@@ -511,7 +511,7 @@
                 if(IsEmail($('#email').val())){
 
                     
-                    if($('#email').val() == $('#confirmEmail').val()){
+                    if($('#email').val() == $('#confirmEmail').val() && $('#password').val() == $('#confirmaPassword').val()){
                         $.post('betlolo/registrar', dados,function( data ) {
                             if(data.status == 1){
                                  $('html, body').animate({
@@ -563,7 +563,7 @@
 
                         });
                     }else{
-                        alert("Email deve ser igual a confirmação");
+                        alert("Email e Senha devem ser igual a suas confirmações");
                         return false;  
                     }
 
