@@ -341,3 +341,5 @@ $app->post('betlolo/logar', 'BetlolosController@logar');
 $app->get('betlolo/minhapagina', 'BetlolosController@minha');
 $app->get('betlolo/ranking', 'BetlolosController@ranking');
 $app->get('betlolo/indicacao', 'BetlolosController@indicacao');
+$app->get('recuperar', 'BetlolosController@recuperar');
+$app->post('betlolo/lembrar', 'BetlolosController@lembrar');

@@ -133,12 +133,12 @@
 <script>
   // Initialize the Firebase SDK
   var config = {
-    apiKey: "AIzaSyBW52g_pZCMNx3z5H_C9a6htwz5tHD9COo",
-    authDomain: "controlblack-6de94.firebaseapp.com",
-    databaseURL: "https://controlblack-6de94.firebaseio.com",
-    projectId: "controlblack-6de94",
-    storageBucket: "controlblack-6de94.appspot.com",
-    messagingSenderId: "957561562013"
+    apiKey: "AIzaSyCEebnsgMn7S8PGGDg4C307au3M3Be1l-M",
+    authDomain: "devinhas-uber.firebaseapp.com",
+    databaseURL: "https://devinhas-uber.firebaseio.com",
+    projectId: "devinhas-uber",
+    storageBucket: "devinhas-uber.appspot.com",
+    messagingSenderId: "179066518680"
   };
   firebase.initializeApp(config);
 </script>

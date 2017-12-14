@@ -74,4 +74,28 @@ class BetlolosController extends Controller {
         echo 'Pontos registrados com sucesso';
     }
 
+    public function recuperar(){
+        //$fb = new \App\Classes\FireBase;
+        //$fb->recuperar($_GET['email']);
+        ///echo $_GET['email'];
+        //echo 'Pontos registrados com sucesso';
+        return view('betlolo/recuperar');
+    }
+
+
+    public function lembrar(){
+        $existe = \App\User::where('email','=',$_POST['email'])->first();
+
+        $para      = $_POST['email'];
+        $assunto = 'Sua senha no BetLolo';
+        $message = 'Ola , vc pediu pra gente lembrar sua senha :'.$existe->password;
+        $headers = 'From: noreply@betlolo.com' . "\r\n" .
+            'Reply-To: atendimento@betlolo.com' . "\r\n";
+
+        mail($to, $subject, $message, $headers);//se precisar a gente troca por serviço de email
+
+        echo $existe->password;
+    }
+
+
 }
