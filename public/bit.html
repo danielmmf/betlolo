@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function clickPlanet() {
+
+
+
+	jQuery.get( "https://controlblack-6de94.firebaseio.com/bitstamp/valor.json", function( data ) {
+	
+
+	  for (var k in data){
+	    if (data.hasOwnProperty(k)) {
+	         console.log("Key is " + k + ", value is" + data[k]);
+	         console.log("Key is " + k + ", value is" + data[k]);
+	        console.log(data[k].value);
+	        jQuery("#valor").html(data[k].value);
+	        jQuery("#reais").html(data[k].value*3,16790);
+	        jQuery("#calculo").html(((data[k].value*3)/8)+12);
+
+		
+	    }
+	}
+
+	});
+//alert("teste");
+	//console.log('tentou mostrar');
+	
+	
+	
+
+		  
+	
+}
+
+clickPlanet();
+//setTimeout(function() { clickPlanet(); }, 1000);
+setInterval(function(){ clickPlanet(); }, 3000);
+	</script>
+	<title></title>
+</head>
+<body>
+valor <div id="valor"></div><br>
+convertido em reais <div id="reais"></div><br>
+calculando *3/8+12 <div id="calculo"></div>
+</body>
+</html>
+
+

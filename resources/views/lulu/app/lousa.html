@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Game</title>
+<style type="text/css">
+#GameCanvas {
+   background-color: #FF0000;
+}
+</style>
+</head>
+<body>
+<canvas id="GameCanvas" width="1000" height="600"></canvas>
+<script type="text/javascript">
+var canvas = document.getElementById("GameCanvas");
+var graphics = canvas.getContext("2d");
+function Update() {}
+function Draw() {
+  graphics.beginPath();
+  graphics.fillRect(20, 20, 50, 50);
+  graphics.fillStyle = "#FFFFFF";
+  graphics.fill();
+  graphics.closePath();
+}
+function GameLoop() {
+  Update();
+  Draw();
+  requestAnimationFrame(GameLoop);
+}
+requestAnimationFrame(GameLoop);
+</script>
+</body>
+</html>
