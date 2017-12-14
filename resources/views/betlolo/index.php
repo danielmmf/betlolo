@@ -44,25 +44,47 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <a href="javascript:;" class="logo" title="Betlolo">Betlolo</a>
+                        <a class="logo" title="Betlolo">Betlolo</a>
 
                         <div class="mob-btn"><i class="ion-android-menu"></i></div>
 
                         <nav>
-                            <ul>
+                            <ul ng-if="!logado">
                                 <li data-scroll="area-01" class="active">Início</li>
-                                <li data-scroll="area-03" class="">Prêmios</li>
-                                <li data-scroll="area-04" class="">Categorias</li>
+                                <li data-scroll="area-03">Prêmios</li>
+                                <li data-scroll="area-04">Categorias</li>
+                                <li data-scroll="area-05">FAQ</li>
                             </ul>
 
-                            <span class="mob-close">×</span>
+                            <!-- <ul ng-if="logado">
+                                <li data-scroll="area-01" style="display:none;">Início</li>
+                                <li data-scroll="area-03" class="active">Prêmios</li>
+                                <li data-scroll="area-04">Categorias</li>
+                                <li data-scroll="area-05">FAQ</li>
+                            </ul> -->
+
+                            <span class="mob-close">&times;</span>
                         </nav>
                         <div class="social">
                             <p>Redes <strong>sociais:</strong></p>
                             <ul>
-                                <li><a href="http://localhost:3000/#" target="_blank" title="Siga-nos no Twitter"><i class="ion-social-twitter"></i></a></li>
-                                <li><a href="http://localhost:3000/#" target="_blank" title="Curta-nos no Facebook"><i class="ion-social-facebook"></i></a></li>
+                                <li><a href="#" target="_blank" title="Siga-nos no Twitter"><i class="ion-social-twitter"></i></a></li>
+                                <li><a href="#" target="_blank" title="Curta-nos no Facebook" target="_blank"><i class="ion-social-facebook"></i></a></li>
                             </ul>
+                        </div>
+                        
+                        <div class="login" ng-if="!logado">
+                            <a href="javascript:;" title="Entrar">Entrar</a>
+                        </div>
+                        
+                        <div class="lolopoints" ng-if="logado">
+                            <span>200</span>
+                        </div>
+
+                        <div class="nickname" ng-if="logado">
+                            <span>Daniel Belentini</span></i>
+
+                            <button id="logout">Sair</button>
                         </div>
                     </div>
                 </div>
@@ -77,7 +99,6 @@
             <div class="row">
                 <div class="col">
                     <div class="info">
-                        <h1>Betlolo</h1>
                         <h2>
                             <strong><span>Betlolo</span></strong> a plataforma de apostas dos <strong><span>Gamers</span></strong>.
                         </h2>
@@ -93,7 +114,7 @@
                             <fieldset>
                                 <legend>Cadastrar</legend>
                                 <div class="input-group mb-2">
-                                    <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
+                                    <div class="input-group-addon"><i class="ion-ios-person-outline"></i></div>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required="">
                                 </div>
                                 <div class="input-group mb-2">
@@ -109,24 +130,24 @@
                                     <input type="tel" class="form-control" id="birthDate" name="nascimento" placeholder="Data de nascimento" required="">
                                 </div>
                                 <div class="input-group mb-2">
-                                    <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required="">
-                                </div>
-                                <div class="input-group mb-4">
-                                    <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
-                                    <input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirmar senha" required="">
-                                </div>
-                                <div class="input-group mb-4">
-                                    <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
-                                    <input type="text" id="cep" name="cep">
-                                    <input type="hidden" id="rua"  name="rua">
-                                    <input type="hidden" id="bairro"  name="bairro" >
+                                    <div class="input-group-addon"><i class="ion-ios-home-outline"></i></div>
+                                    <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP">
+                                    <input type="hidden" id="rua" name="rua">
+                                    <input type="hidden" id="bairro" name="bairro" >
                                     <input type="hidden" id="cidade" name="cidade" >
-                                    <input type="hidden" id="uf"  name="uf">
+                                    <input type="hidden" id="uf" name="uf">
                                 </div>
-
+                                <div class="input-group mb-2">
+                                    <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+                                </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
+                                    <input type="password" class="form-control" id="confirmaPassword" name="confirmaPassword" placeholder="Confirmar senha">
+                                </div>
+                                
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="cadastrar">Cadastrar</button>
+                                    <button type="submit" class="btn btn-primary" id="cadastrar">Cadastrar</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -143,34 +164,6 @@
     </section>
     <!-- END FIRST SECTION -->
 
-    <!-- START SECOND SECTION -->
-    <section id="area-02">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <p><strong>Compartilhe</strong> nossa página e ganhe Lolopoints para sair na frente!</p>
-                </div>
-                <div class="col">
-                    <div class="sort">
-                        <ul>
-                            <li>40</li>
-                            <li>60</li>
-                            <li>80</li>
-                            <li>160</li>
-                            <li>200</li>
-                            <li class="main-sort" style="display: none;">0</li>
-                            <li class="upper-sort" style="display: list-item;">200</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <p><strong>Confira</strong> os prêmios que você ganhará se for um dos melhores!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END SECOND SECTION -->
-
     <!-- START THIRD SECTION -->
     <section id="area-03">
         <div class="container-fluid">
@@ -184,68 +177,64 @@
 
                     <div class="prizes">
                         <ul class="carousel owl-carousel">
-                            <li class="item first-prize transition" style="margin-top: 53px; margin-left: 461px; z-index: 1; transition-duration: 0.35s;">
+                            <li class="item active first-prize">
                                 <span class="pos">1º</span>
-                                <img src="./index_files/prize-01.png" alt="1º lugar">
+                                <img src="dist/img/prizes/prize-01.png" alt="1º lugar">
                                 <span class="caption">NB Razer Gaming Blade</span>
                             </li>
-                            <li class="item transition" style="margin-top: 53px; margin-left: 188px; z-index: 2; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">2º</span>
-                                <img src="./index_files/prize-02.png" alt="2º lugar">
+                                <img src="dist/img/prizes/prize-02.png" alt="2º lugar">
                                 <span class="caption">Kit Razer Mercury Teclado Mouse e Headset</span>
                             </li>
-                            <li class="item transition" style="margin-top: 74px; margin-left: -22px; z-index: 4; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">3º</span>
-                                <img src="./index_files/prize-03.png" alt="3º lugar">
+                                <img src="dist/img/prizes/prize-03.png" alt="3º lugar">
                                 <span class="caption">Kit Teclado Blackwidow Chroma e mouse Mamba </span>
                             </li>
-                            <li class="item transition" style="margin-top: 108px; margin-left: -69px; z-index: 7; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">4º</span>
-                                <img src="./index_files/prize-04.png" alt="4º lugar">
+                                <img src="dist/img/prizes/prize-04.png" alt="4º lugar">
                                 <span class="caption">Razer Kraken Forged Silver</span>
                             </li>
-                            <li class="item transition" style="margin-top: 138px; margin-left: 67px; z-index: 8; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">5º</span>
-                                <img src="./index_files/prize-05.png" alt="5º lugar">
+                                <img src="dist/img/prizes/prize-05.png" alt="5º lugar">
                                 <span class="caption">Teclado Razer Blackwidow Chroma V2</span>
                             </li>
-                            <li class="item transition active" style="margin-top: 150px; margin-left: 324px; z-index: 10; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">6º e 7º</span>
-                                <img src="./index_files/prize-06-07.png" alt="6º ao 7º lugar">
+                                <img src="dist/img/prizes/prize-06-07.png" alt="6º ao 7º lugar">
                                 <span class="caption">Kit Razer 4 em 1 Holiday Bundle</span>
                             </li>
-                            <li class="item transition" style="margin-top: 138px; margin-left: 582px; z-index: 9; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">8º</span>
-                                <img src="./index_files/prize-08.png" alt="8º lugar">
+                                <img src="dist/img/prizes/prize-08.png" alt="8º lugar">
                                 <span class="caption">Teclado e Mouse Game Razer Cynosa Pro Bundle</span>
                             </li>
-                            <li class="item transition" style="margin-top: 108px; margin-left: 718px; z-index: 3; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">9º</span>
-                                <img src="./index_files/prize-09.png" alt="9º lugar">
+                                <img src="dist/img/prizes/prize-09.png" alt="9º lugar">
                                 <span class="caption">Headset Razer Kraken USB</span>
                             </li>
-                            <li class="item transition" style="margin-top: 75px; margin-left: 671px; z-index: 0; transition-duration: 0.35s;">
+                            <li class="item">
                                 <span class="pos">10º</span>
-                                <img src="./index_files/prize-10.png" alt="10º lugar">
+                                <img src="dist/img/prizes/prize-10.png" alt="10º lugar">
                                 <span class="caption">Mouser Razer Abyssus V2</span>
                             </li>
-                            <!-- <li class="item"><img src="dist/img/prizes/prize-11-12_a.png" alt="11º ao 12º lugar"></li>
-                            <li class="item"><img src="dist/img/prizes/prize-11-12_b.png" alt="11º ao 12º lugar"></li>
-                            <li class="item"><img src="dist/img/prizes/prize-13-20.png" alt="13º ao 20º lugar"></li> -->
                         </ul>
 
                         <div class="controls">
-                            <a href="http://localhost:3000/#" class="previous"><i class="ion-chevron-left"></i></a> 
-                            <a href="http://localhost:3000/#" class="next"><i class="ion-chevron-right"></i></a>
+                            <a href="#" class="previous"><i class="ion-chevron-left"></i></a> 
+                            <a href="#" class="next"><i class="ion-chevron-right"></i></a>
                         </div>
                     </div>
 
                     <div class="buttons">
                         <button class="btn btn-primary prizes-table">Confira a lista de prêmios!</button>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//landing.betlolo.com/" class="btn btn-info" target="_blank">Compartilhe com os amigos!</a>
+                        <a href="javascript:;" class="btn btn-info invite">Convide um amigo</a>
                     </div>
-
-                    
                 </div>
             </div>
         </div>
@@ -268,16 +257,62 @@
                             <h3>Streamings</h3>
                             <p>Aposte no desempenho dos <strong>seus streamers favoritos</strong></p>
                         </div>
-                        <div>
+                        <!-- <div>
                             <h3>Challenges</h3>
                             <p>Ganhe entrando em competições <strong>desafie outros jogadores</strong></p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- END FOURTH SECTION -->
+
+    <!-- START FIFTH SECTION -->
+    <section id="area-05">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h2>Perguntas Frequentes</h2>
+
+                    <div class="content">
+                        <dl>
+                            <dt>Como ganho os prêmios?</dt>
+                            <dd>Você ganha uma quantidade de <em>Lolopoints (LP)</em> conforme usa a plataforma Betlolo. <br>Nós premiaremos os loloplayers que tiverem maior quantidade de LP até o final da temporada Beta.</dd>
+                        </dl>
+                        <dl>
+                            <dt>O que são <em>Lolopoints</em>?</dt>
+                            <dd><em>Lolopoints</em> são os pontos que você ganha por apostar na plataforma e realizar algumas tarefas. <br>Ao cadastrar sua conta, você terá uma carteira de <em>Lolopoints</em>, e a quantidade de <em>Lolopoints</em> que você tiver definirá sua posição no rank da temporada.</dd>
+                        </dl>
+                        <dl>
+                            <dt>Sistema de pontos LP</dt>
+                            <dd>Ao ganhar uma aposta, você ganhará a quantidade de 25% LP sobre o que ganhou na aposta. <br>(Ex. Ganhou 100 créditos fictícios, ganha 25 LP)</dd>
+                        </dl>
+                        <dl>
+                            <dt>Você também ganha <em>Lolopoints</em> realizando algumas tarefas no nosso beta da Betlolo</dt>
+                            <dd>Compartilhando o link do Betlolo diariamente<br>
+                                Convidando um amigo para o Betlolo<br>
+                                Completando as informações do seu perfil
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>Aviso:</dt>
+                            <dd>Essas são algumas formas de ganhar LP, mas fique atento ao site, pois haverá mais maneiras de ganhar os <em>Lolopoints</em>.</dd>
+                        </dl>
+                        <dl>
+                            <dt>Como apostar</dt>
+                            <dd>Ao criar o seu cadastro você terá uma carteira de CRÉDITOS FICTÍCIOS, esses créditos são os que você poderá apostar em nossas categorias de apostas. Então fique atento, logo o Betlolo estará no ar!</dd>
+                        </dl>
+                        <dl>
+                            <dt>Quando o Betlolo vai ao ar?</dt>
+                            <dd>Fique ligado! Você receberá um e-mail informando a data de lançamento! Mas não se preocupe, não vai demorar!</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END FIFTH SECTION -->
     
     <!-- START FOOTER -->
     <footer>
@@ -302,6 +337,7 @@
     <!-- END FOOTER -->
     
     
+    <!-- Modal: tabela de prêmios -->
     <div id="prizesTable" class="lightbox">
         <i class="ion-android-close close"></i>
         <div class="container">
@@ -371,8 +407,9 @@
         </div>
     </div>
     
-    <div id="lolopoints" class="lightbox" style="top: 559px; display: none;">
-        <span class="closeBanner">×</span>
+    <!-- Modal: Lolopoints -->
+    <div id="lolopoints" class="lightbox">
+        <span class="closeBanner">&times;</span>
 
         <div class="info">
             <div class="quant-lolopoints">
@@ -381,7 +418,7 @@
 
             <h2>Parabéns</h2>
             <p>
-                Enviaremos para seu e-mail o comprovante de <span>160</span> Lolopoints!<br>
+                Enviaremos para seu e-mail o comprovante de <span>200</span> Lolopoints!<br>
                 Seus pontos ficarão guardados na carteira da Betlolo.
             </p>
             <p>
@@ -393,6 +430,78 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal: Login -->
+    <div id="login" class="lightbox">
+        <div class="wrapper">
+            <div class="box-forms">
+                <i class="ion-android-close close"></i>
+                <div class="login-form">
+                    <form>
+                        <fieldset>
+                            <legend>Login</legend>
+                            
+                            <div class="input-group mb-2">
+                                <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
+                                <input type="email" class="form-control" id="emailLogin" name="emailLogin" placeholder="E-mail">
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
+                                <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Senha">
+                            </div>
+                            <div class="input-group mb-4 forgot-pass">
+                                <a href="javascript:;" title="Esqueci minha senha">Esqueceu sua senha?</a>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Logar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- Esqueceu a senha -->
+                <div class="forgot-pass-form">
+                    <form>
+                        <fieldset>
+                            <legend>Esqueceu sua senha?</legend>
+                            
+                            <div class="input-group mb-2">
+                                <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
+                                <input type="email" class="form-control" id="emailForgot" name="emailForgot" placeholder="Digite o e-mail cadastrado">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Convide um amigo -->
+    <div id="inviteFriend" class="lightbox">
+        <div class="wrapper">
+            <div class="box-forms">
+                <i class="ion-android-close close"></i>
+                <div class="forgot-pass-form">
+                    <form>
+                        <fieldset>
+                            <legend>Convide um amigo</legend>
+                            
+                            <div class="input-group mb-2">
+                                <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
+                                <input type="email" class="form-control" id="emailForgot" name="emailForgot" placeholder="Digite o e-mail desejado">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div id="overlay" style="display: none;"></div>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
@@ -529,47 +638,8 @@
                     if($('#email').val() == $('#confirmEmail').val() && $('#password').val() == $('#confirmaPassword').val()){
                         $.post('betlolo/registrar', dados,function( data ) {
                             if(data.status == 1){
-                                 $('html, body').animate({
-                                        scrollTop: $('#area-02').offset().top - 100
-                                    }, 500);
+                                $('#lolopoints .quant-lolopoints').find('span').text(result);
 
-                                    var output, started, duration, desired;
-
-                                    duration = 5000;
-                                    desired = '50';
-
-                                    output = $('.main-sort');
-                                    started = new Date().getTime();
-
-                                    animationTimer = setInterval(function() {
-                                        if (output.text().trim() === desired || new Date().getTime() - started > duration) {
-                                            clearInterval(animationTimer);
-                                        } else {
-                                            output.text(
-                                                20 *(Math.floor(Math.random() * (220-40)/20))
-                                           );
-                                        }
-                                    }, 80);
-
-                                   
-
-                                   
-
-                                    var result = $(".upper-sort").text(randomNumbers).html();
-                                    
-                                    setTimeout(function() {
-                                      printNumbers(); 
-                                      $('.main-sort').hide();
-                                      $('.upper-sort').show();
-
-                                      $('#lolopoints').css('top', lolopoints);
-
-                                      $('#overlay, #lolopoints').delay(200).fadeIn();
-
-
-                                      $('#lolopoints .quant-lolopoints').find('span').text(result);
-
-                                    }, 5100);
                             }else{
                                 alert( data.response );
                                 return false;
@@ -578,13 +648,13 @@
 
                         });
                     }else{
-                        alert("Email e Senha devem ser igual a suas confirmações");
+                        alert("E-mail e Senha devem ser igual a suas confirmações");
                         return false;  
                     }
 
                         
                 }else{
-                    alert("Preencha com email correto");
+                    alert("Preencha com e-mail correto");
                     return false;
                 }
 
