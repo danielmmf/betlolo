@@ -1,8 +1,0 @@
-class_name: UnitTester
-modules:
-    enabled:
-        - Asserts
-        - Lumen:
-            part: ORM
-            environment_file: .env.testing     
-        - \Helper\Unit
