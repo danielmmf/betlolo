@@ -437,23 +437,23 @@
             <div class="box-forms">
                 <i class="ion-android-close close"></i>
                 <div class="login-form">
-                    <form>
+                    <form id="form_login">
                         <fieldset>
                             <legend>Login</legend>
                             
                             <div class="input-group mb-2">
                                 <div class="input-group-addon"><i class="ion-ios-email-outline"></i></div>
-                                <input type="email" class="form-control" id="emailLogin" name="emailLogin" placeholder="E-mail">
+                                <input type="email" class="form-control" id="emailLogin" name="email" placeholder="E-mail">
                             </div>
                             <div class="input-group mb-2">
                                 <div class="input-group-addon"><i class="ion-ios-locked-outline"></i></div>
-                                <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Senha">
+                                <input type="password" class="form-control" id="passwordLogin" name="password" placeholder="Senha">
                             </div>
                             <div class="input-group mb-4 forgot-pass">
                                 <a href="javascript:;" title="Esqueci minha senha">Esqueceu sua senha?</a>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Logar</button>
+                                <button type="button" id="logar" class="btn btn-primary">Logar</button>
                             </div>
                         </fieldset>
                     </form>
@@ -722,6 +722,22 @@
     });
             
 
+    $("#login").on('click', function(){
+         if($("#emailLogin").val() ==""){
+            alert("Preencha seu email");
+            return false;
+        }
+        if($("#passwordLogin").val() ==""){
+            alert("Preencha sua senha");
+            return false;
+        }
+        var dados = $("#form_login").serialize();
+        $.post('betlolo/logar', dados,function( data ) {
+          window.location = "/betlolo/"+data;
+        });
+
+    })
+        
 
     </script>
 
