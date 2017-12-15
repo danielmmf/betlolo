@@ -26,7 +26,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <strong>Admin Betlolo</strong>
+                        <strong>Admin Betlolo</strong><a href="/logoff">Logoff</a>
                     </div>
                 </div>
             </div>
