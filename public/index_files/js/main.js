@@ -6,11 +6,11 @@ $(document).ready(function() {
     $("#overlay, .lightbox").fadeOut();
   });
 
-  $('header .login').on('click', 'a', function(e) {
+ /* $('header .login').on('click', 'a', function(e) {
     e.preventDefault();
     $("#overlay, #login").fadeIn();
   });
-
+*/
   $('.invite').on('click', function(e) {
     e.preventDefault();
     $("#overlay, #inviteFriend").fadeIn();

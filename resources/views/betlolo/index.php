@@ -75,7 +75,7 @@
                         
 
                         <div class="login" ng-if="!logado">
-                            <a href="javascript:;" title="Entrar">Entrar</a>
+                            <a href="/login" title="Entrar">Entrar</a>
                         </div>
 
                         

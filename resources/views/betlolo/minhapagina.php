@@ -42,29 +42,20 @@
                     <div class="card">
                         <div class="card-body">
                             <h2>Meus Pontos</h2>
-
-                          
-                            
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">Ação</th>
                                         <th scope="col">Data</th>
-                          
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="(data , ponto) in pontos">
+                                    <tr ng-repeat=" ponto in pontos">
                                         <td>{{ponto.game}}</td>
                                         <td>{{ponto.hora}}</td>
-                                       
                                     </tr>
-                            
-                                    
                                  </tbody>
                             </table>
-
-                        
                         </div>
                     </div>
                 </div>
