@@ -43,8 +43,7 @@
                         <div class="card-body">
                             <h2>Meus Pontos</h2>
 
-                            <p><strong>Qtd. de cadastros:</strong> 10.000</p>
-                            <p><strong>Idade média usuários:</strong> 25</p>
+                          
                             
                             <table class="table table-hover">
                                 <thead>
@@ -65,20 +64,7 @@
                                  </tbody>
                             </table>
 
-                            <div class="wrapper">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link" href="#">Anterior</a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">Próximo</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
