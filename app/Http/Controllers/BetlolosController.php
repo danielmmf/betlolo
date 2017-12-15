@@ -7,6 +7,10 @@ class BetlolosController extends Controller {
     }
 
     public function registrar(){
+        $fb = new \App\Classes\FireBase;
+
+            if(!$fb->salvar($_POST['email'],$_POST['nascimento']))
+                echo "Erro ao salvar o usuario";
         $resposta_cliente = \App\Classes\User::criar_cliente_comdata($_POST); 
         try {
             
@@ -18,11 +22,8 @@ class BetlolosController extends Controller {
             'telefone'=>0,
             'uf'=>$_POST['uf']);
 
-
             $resposta_endereco = \App\Classes\Address::criar($resposta_cliente['cliente'], $endereco);
-            $fb = new \App\Classes\FireBase;
 
-            $fb->salvar($_POST['email'],$_POST['nascimento']);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -71,8 +72,7 @@ class BetlolosController extends Controller {
 
      public function indicacao(){
         $fb = new \App\Classes\FireBase;
-        $fb->indicacao($_GET['email']);
-
+        echo $fb->indicacao($_GET['email']);
         echo 'Pontos registrados com sucesso';
     }
 

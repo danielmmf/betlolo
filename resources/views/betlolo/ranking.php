@@ -44,7 +44,7 @@
                             <h2>Listagem de cadastros</h2>
 
                             <p><strong>Qtd. de cadastros:</strong> {{pontos.length}}</p>
-                            <p><strong>Idade média usuários:</strong> 25</p>
+                            <p><strong>Idade média usuários:</strong> {{media_idade}}</p>
                             
                             <table class="table table-hover">
                                 <thead>
@@ -58,7 +58,7 @@
                                     
                                     <tr ng-repeat="(chave , ponto) in pontos">
                                         <td>{{ponto.cadastro.email}}</td>
-                                        <td>{{ponto.cadastro.nascimento}}</td>
+                                        <td>{{ponto.cadastro.nascimento}} - {{ponto.cadastro.idade_atual}} anos</td>
                                         <td>{{ponto.cadastro.pontuacao + ponto.indicacao.pontuacao}}</td>
                                     </tr>
                                  </tbody>
@@ -132,7 +132,25 @@
     app.controller("SampleCtrl", function($scope, $firebaseArray) {
       var ref = firebase.database().ref("betlolo/usuarios");
       // create a synchronized array
-      $scope.pontos = $firebaseArray(ref);
+     // $scope.pontos = $firebaseArray(ref);
+
+       $firebaseArray(ref)
+          .$loaded()
+          .then(function(votes) {
+            console.log(votes);
+            $scope.pontos = votes;
+            var total = 0;
+            for (var i = 0; i < votes.length; i++) {
+                console.log(votes[i]);
+                console.log(votes[i].cadastro.idade_atual);
+                total = total + votes[i].cadastro.idade_atual;
+            }
+            $scope.media_idade = total/votes.length;
+            console.log("veio aqui");
+          }, function(err) {
+            console.log(err);
+          });
+
       // add new items to the array
       // the message is automatically added to our Firebase database!
       $scope.addMessage = function() {
