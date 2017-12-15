@@ -646,7 +646,7 @@
                     if($('#email').val() == $('#confirmEmail').val() && $('#password').val() == $('#confirmaPassword').val()){
                         $.post('betlolo/registrar', dados,function( data ) {
                             if(data.status == 1){
-                                $('#lolopoints .quant-lolopoints').find('span').text(result);
+                                $('#lolopoints .quant-lolopoints').find('span').text('200');
 
                             }else{
                                 alert( data.response );
