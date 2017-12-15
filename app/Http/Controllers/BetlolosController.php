@@ -43,7 +43,9 @@ class BetlolosController extends Controller {
     		}else{
     			echo 'minhapagina';
     		}
-    	}
+    	}else{
+            'login';
+        }
     }
 
 
