@@ -48,7 +48,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Jogo</th>
+                                        <th scope="col">Ação</th>
                                         <th scope="col">Data</th>
                           
                                     </tr>
@@ -56,7 +56,7 @@
                                 <tbody>
                                     <tr ng-repeat="(data , ponto) in pontos">
                                         <td>{{ponto.game}}</td>
-                                        <td>{{ponto.$id}}</td>
+                                        <td>{{ponto.hora}}</td>
                                        
                                     </tr>
                             
