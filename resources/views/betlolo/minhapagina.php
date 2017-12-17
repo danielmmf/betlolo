@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="pt-br">
+    <meta property="og:url"           content="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $email;?>" />
+  <meta property="og:type"          content="Betlolo" />
+  <meta property="og:title"         content="Betlolo" />
+  <meta property="og:description"   content="Plataform de apostas de games" />
+  <meta property="og:image"         content="https://betlolo.herokuapp.com/betlolo/indicacao?email=teste@teste.com/image.jpg" />
+
     
     <!-- Favicon Images -->
     <link rel="icon" href="/dist/img/favicon/favicon.ico" />
@@ -41,7 +47,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Meus Pontos</h2>
+                         
+                            <h2>Meus Pontos</h2><div class="fb-share-button" 
+                            data-href="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $email;?>"
+                            data-layout="button_count">
+                          </div>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -52,7 +62,7 @@
                                 <tbody>
                                     <tr ng-repeat=" ponto in pontos">
                                         <td>{{ponto.game}}</td>
-                                        <td>{{ponto.hora}}</td>
+                                        <td>{{ponto.hora| date:"dd/MM/yyyy ' as ' h:mma"}}</td>
                                     </tr>
                                  </tbody>
                             </table>
@@ -120,6 +130,16 @@
       // click on `index.html` above to see $remove() and $save() in action
     });
 </script>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/pt_BR/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-    
+  <!-- Your share button code -->
+ 
+</body>    
 </html>
