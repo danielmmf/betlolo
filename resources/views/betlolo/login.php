@@ -245,7 +245,7 @@
             $("#cadastrar").on('click', function(){
                 var dados = $("#form_cadastro").serialize();
                 $.post('betlolo/logar', dados,function( data ) {
-                  window.location = "/betlolo/"+data;
+                  window.location = "/"+data;
                 });
 
             })

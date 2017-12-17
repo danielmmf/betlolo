@@ -32,21 +32,26 @@ class BetlolosController extends Controller {
 
 
     public function logar(){
-    	$dados = $_POST;
-    	$usuario = new \App\Classes\User;
-    	$usuario->email = $dados['email'];
-    	$usuario->password = $dados['password'];
-    	$resultado = $usuario->login();
+        try {
+            $dados = $_POST;
+            $usuario = new \App\Classes\User;
+            $usuario->email = $dados['email'];
+            $usuario->password = $dados['password'];
+            $resultado = $usuario->login();
 
-    	if($resultado['logado']){
-    		if($resultado['grupo']==1){
-    			echo 'ranking';
-    		}else{
-    			echo 'minhapagina';
-    		}
-    	}else{
-            'login';
+            if($resultado['logado']){
+                if($resultado['grupo']==1){
+                    echo 'betlolo/ranking';
+                }else{
+                    echo 'betlolo/minhapagina';
+                }
+            }else{
+                'login';
+            }
+        } catch (Exception $e) {
+            echo 'login';
         }
+    	
     }
 
 
