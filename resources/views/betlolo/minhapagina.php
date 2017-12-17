@@ -9,7 +9,7 @@
   <meta property="og:type"          content="Betlolo" />
   <meta property="og:title"         content="Betlolo" />
   <meta property="og:description"   content="Plataform de apostas de games" />
-  <meta property="og:image"         content="https://betlolo.herokuapp.com/betlolo/indicacao?email=teste@teste.com/image.jpg" />
+  <meta property="og:image"         content="http://betlolo.herokuapp.com/images/betlolo.png" />
 
     
     <!-- Favicon Images -->
