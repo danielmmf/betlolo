@@ -52,7 +52,7 @@ class  FireBase{
 			$DEFAULT_PATH = 'betlolo';
 
 			$firebase = new \Firebase\FirebaseLib($DEFAULT_URL, $DEFAULT_TOKEN);
-			//echo $firebase->set($DEFAULT_PATH . '/usuarios/'.$key.'/indicacao', $dados);
+			$firebase->set($DEFAULT_PATH . '/usuarios/'.$key.'/indicacao', $dados);
 			echo "Usuario pontuado com sucesso";
 		} catch (Exception $e) {
 			echo $e->getMessage();
