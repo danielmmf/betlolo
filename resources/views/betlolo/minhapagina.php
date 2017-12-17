@@ -47,11 +47,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                         
-                            <h2>Meus Pontos</h2><div class="fb-share-button" 
+                     
+                            <h2>Meus Pontos</h2><div ng-hide="pontos[1]" class="fb-share-button" 
                             data-href="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $email;?>"
                             data-layout="button_count">
-                          </div><small>Compartilhe seu link para ganhar pontos de indicação</small>
+                          </div><small ng-hide="pontos[1]">&nbsp;&nbsp;Compartilhe seu link para ganhar pontos de indicação</small>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
