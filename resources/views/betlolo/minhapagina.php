@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="pt-br">
-    <meta property="og:url"           content="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $email;?>" />
+    <meta property="og:url"           content="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $usuario;?>" />
   <meta property="og:type"          content="Betlolo" />
   <meta property="og:title"         content="Betlolo" />
   <meta property="og:description"   content="Plataform de apostas de games" />
@@ -49,7 +49,7 @@
                         <div class="card-body">
                      
                             <h2>Meus Pontos</h2><div ng-hide="pontos[1]" class="fb-share-button" 
-                            data-href="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $email;?>"
+                            data-href="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $usuario;?>"
                             data-layout="button_count">
                           </div><small ng-hide="pontos[1]">&nbsp;&nbsp;Compartilhe seu link para ganhar pontos de indicação</small>
                             <table class="table table-hover">

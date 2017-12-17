@@ -36,7 +36,7 @@ class  FireBase{
 
 
 	public function indicacao( $email){
-		$key = md5(strtolower($email));
+		$key = $email;
 		$dateTime = new \DateTime();
 		$dados = array(
 	    	"game" => "indicaco",
