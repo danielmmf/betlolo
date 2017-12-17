@@ -51,7 +51,7 @@
                             <h2>Meus Pontos</h2><div class="fb-share-button" 
                             data-href="https://betlolo.herokuapp.com/betlolo/indicacao?email=<?php echo $email;?>"
                             data-layout="button_count">
-                          </div>
+                          </div><small>Compartilhe seu link para ganhar pontos de indicação</small>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
