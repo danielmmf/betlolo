@@ -104,5 +104,21 @@ class BetlolosController extends Controller {
         echo $existe->password;
     }
 
+    public function torna_admin(){
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $email = $request->email;
+ 
+        try {
+            $existe = \App\User::where('email','=',$email)->first();
+            $existe->group_id = 1;
+            $existe->save();
+            
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        echo 'OK';
+    }
+
 
 }

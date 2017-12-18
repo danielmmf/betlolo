@@ -52,6 +52,7 @@
                                         <th scope="col">E-mail</th>
                                         <th scope="col">Data de Nascimento</th>
                                         <th scope="col">Lolopoints</th>
+                                        <th scope="col">Admin</th>
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -60,6 +61,7 @@
                                         <td>{{ponto.cadastro.email}}</td>
                                         <td>{{ponto.cadastro.nascimento}} - {{ponto.cadastro.idade_atual}} anos</td>
                                         <td>{{ponto.cadastro.pontuacao + ponto.indicacao.pontuacao}}</td>
+                                        <td><a href="#" ng-click="torna_admin(ponto.cadastro.email)">Admin</a></td>
                                     </tr>
                                  </tbody>
                             </table>
@@ -129,7 +131,7 @@
 
 
   var app = angular.module("sampleApp", ["firebase"]);
-    app.controller("SampleCtrl", function($scope, $firebaseArray) {
+    app.controller("SampleCtrl", function($scope, $firebaseArray, $http) {
       var ref = firebase.database().ref("betlolo/usuarios");
       // create a synchronized array
      // $scope.pontos = $firebaseArray(ref);
@@ -157,6 +159,14 @@
         $scope.messages.$add({
           text: $scope.newMessageText
         });
+      };
+
+
+
+      $scope.torna_admin = function(email) {
+        alert("vai virar admin");
+        $http.post("/betlolo/vira_admin", {'email':email});
+
       };
       // click on `index.html` above to see $remove() and $save() in action
     });

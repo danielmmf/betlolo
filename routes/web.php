@@ -344,3 +344,4 @@ $app->get('betlolo/ranking', 'BetlolosController@ranking');
 $app->get('betlolo/indicacao', 'BetlolosController@indicacao');
 $app->get('recuperar', 'BetlolosController@recuperar');
 $app->post('betlolo/lembrar', 'BetlolosController@lembrar');
+$app->post('betlolo/vira_admin', 'BetlolosController@torna_admin');
