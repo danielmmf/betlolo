@@ -683,16 +683,21 @@
                         }
                     },
                     submitHandler: function() {
-                        // $.post('betlolo/registrar', dados,function( data ) {
-                        //     if (data.status == 1) {
-                        //          $('#overlay, #lolopoints').delay(200).fadeIn();
-                        //     } else {
-                        //         alert( data.response );
-                        //         return false;
-                        //     }
-                        // });
-            alert("validou");
-            $('#overlay, #lolopoints').delay(200).fadeIn();
+                         $.post('betlolo/registrar', dados,function( data ) {
+                             if (data.status == 1) {
+                                  $('#overlay, #lolopoints').delay(200).fadeIn();
+                                  setTimeout(function(){ 
+                                    $.post('betlolo/logar', dados,function( data ) {
+                                      window.location = "/"+data;
+                                    })}, 3000);
+                                  
+                             } else {
+                                 alert( data.response );
+                                 return false;
+                             }
+                         });
+
+            
         }
     });
     
