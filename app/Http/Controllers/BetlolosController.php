@@ -36,6 +36,7 @@ class BetlolosController extends Controller {
             $dados = $_POST;
             $usuario = new \App\Classes\User;
             $usuario->email = $dados['email'];
+
             $usuario->password = $dados['password'];
             $resultado = $usuario->login();
 
@@ -58,7 +59,7 @@ class BetlolosController extends Controller {
     public function minha(){
     	if(isset($_SESSION['grupo_logado'])){
             $key = md5(strtolower($_SESSION['logado']['email']));
-    	   return view('betlolo/minhapagina', array('usuario' => $key, 'email'=>$_SESSION['logado']['email'] ));
+    	   return view('betlolo/minhapagina', array('usuario' => $key, 'nome'=>$_SESSION['logado']['nome'], 'email'=>$_SESSION['logado']['email'] ));
     	}else{
     		header("Location: /");
 			die();
@@ -68,7 +69,7 @@ class BetlolosController extends Controller {
 
     public function ranking(){
     	if(isset($_SESSION['grupo_logado']) && $_SESSION['grupo_logado'] == 1){
-    		return view('betlolo/ranking', array('usuarios' => 'usuario' ));
+    		return view('betlolo/ranking', array('usuarios' => 'usuario' , 'nome'=>$_SESSION['logado']['nome']));
     	}else{
     		header("Location: /");
 			die();

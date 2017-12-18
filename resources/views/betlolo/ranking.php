@@ -26,7 +26,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <strong>Admin Betlolo</strong><a href="/logoff">Logoff</a>
+                        <strong>Admin Betlolo</strong>&nbsp;&nbsp; - &nbsp;&nbsp; <?php echo $nome ?> &nbsp;&nbsp; - &nbsp;&nbsp;<a href="/logoff">Logoff</a>
                     </div>
                 </div>
             </div>

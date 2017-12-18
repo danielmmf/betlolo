@@ -32,7 +32,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <strong>Minha Pagina Betlolo</strong><a href="/logoff">Logoff</a>
+                        <strong>Minha Pagina Betlolo</strong>&nbsp;&nbsp; - &nbsp;&nbsp; <?php echo $nome ?> &nbsp;&nbsp; - &nbsp;&nbsp;<a href="/logoff">Logoff</a>
                     </div>
                 </div>
             </div>
