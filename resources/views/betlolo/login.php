@@ -245,7 +245,12 @@
             $("#cadastrar").on('click', function(){
                 var dados = $("#form_cadastro").serialize();
                 $.post('betlolo/logar', dados,function( data ) {
-                  window.location = "/"+data;
+                    if(data.response == 1){
+                        window.location = "/"+data.page;
+                    }else{
+                        alert("Nao conseguimos logar");
+                    }
+                  
                 });
 
             })

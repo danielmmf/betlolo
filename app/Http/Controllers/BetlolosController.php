@@ -33,8 +33,12 @@ class BetlolosController extends Controller {
         }
 
 
-            if(!$fb->salvar($_POST['email'],$_POST['nascimento']))
-                echo "Erro ao salvar o usuario";
+            if(!$fb->salvar($_POST['email'],$_POST['nascimento'])){
+                $resp = array();
+                $resp['status'] = 0;
+                $resp['response']="Erro ao salvar o usuario";
+                return response()->json($resp);
+            }
         $resposta_cliente = \App\Classes\User::criar_cliente_comdata($_POST); 
         try {
             
@@ -49,7 +53,10 @@ class BetlolosController extends Controller {
             $resposta_endereco = \App\Classes\Address::criar($resposta_cliente['cliente'], $endereco);
 
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $resp = array();
+            $resp['status'] = 0;
+            $resp['response']=$e->getMessage();
+            return response()->json($resp);
         }
         return response()->json($resposta_cliente);
     }
@@ -66,15 +73,29 @@ class BetlolosController extends Controller {
 
             if($resultado['logado']){
                 if($resultado['grupo']==1){
-                    echo 'betlolo/ranking';
+                    $resp = array();
+                    $resp['status'] = 1;
+                    $resp['page']= 'betlolo/ranking';
+                    return response()->json($resp);
                 }else{
-                    echo 'betlolo/minhapagina';
+                    $resp = array();
+                    $resp['status'] = 1;
+                    $resp['page']= 'betlolo/minhapagina';
+                    return response()->json($resp);
                 }
             }else{
-                'login';
+                $resp = array();
+                    $resp['status'] = 0;
+                    $resp['page']= 'login';
+                    return response()->json($resp);
+                }
             }
         } catch (Exception $e) {
-            echo 'login';
+            $resp = array();
+            $resp['status'] = 0;
+            $resp['page']= 'login';
+            return response()->json($resp);
+            }
         }
     	
     }
