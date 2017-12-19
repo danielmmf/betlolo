@@ -130,7 +130,7 @@
   firebase.initializeApp(config);
 
 
-  var app = angular.module("sampleApp", ["firebase"]);
+    var app = angular.module("sampleApp", ["firebase"]);
     app.controller("SampleCtrl", function($scope, $firebaseArray, $http) {
       var ref = firebase.database().ref("betlolo/usuarios");
       // create a synchronized array
@@ -139,16 +139,16 @@
        $firebaseArray(ref)
           .$loaded()
           .then(function(votes) {
-            console.log(votes);
+            //console.log(votes);
             $scope.pontos = votes;
             var total = 0;
             for (var i = 0; i < votes.length; i++) {
-                console.log(votes[i]);
-                console.log(votes[i].cadastro.idade_atual);
+               // console.log(votes[i]);
+                //console.log(votes[i].cadastro.idade_atual);
                 total = total + votes[i].cadastro.idade_atual;
             }
             $scope.media_idade = total/votes.length;
-            console.log("veio aqui");
+          //  console.log("veio aqui");
           }, function(err) {
             console.log(err);
           });
@@ -164,7 +164,7 @@
 
 
       $scope.torna_admin = function(email) {
-        alert("vai virar admin");
+        //alert("vai virar admin");
         $http.post("/betlolo/vira_admin", {'email':email});
 
       };

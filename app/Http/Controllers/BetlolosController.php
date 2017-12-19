@@ -85,19 +85,16 @@ class BetlolosController extends Controller {
                 }
             }else{
                 $resp = array();
-                    $resp['status'] = 0;
-                    $resp['page']= 'login';
-                    return response()->json($resp);
-                }
+                $resp['status'] = 0;
+                $resp['page']= 'login';
+                return response()->json($resp);
             }
-        } catch (Exception $e) {
+        }catch (Exception $e) {
             $resp = array();
             $resp['status'] = 0;
             $resp['page']= 'login';
             return response()->json($resp);
-            }
         }
-    	
     }
 
 

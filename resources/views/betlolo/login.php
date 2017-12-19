@@ -245,7 +245,7 @@
             $("#login").on('click', function(){
                 var dados = $("#form_login").serialize();
                 $.post('betlolo/logar', dados,function( data ) {
-                    if(data.response == 1){
+                    if(data.status == 1){
                         window.location = "/"+data.page;
                     }else{
                         alert("Nao conseguimos logar");
