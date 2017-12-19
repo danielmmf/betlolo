@@ -693,7 +693,7 @@
                                   $('#overlay, #lolopoints').delay(200).fadeIn();
                                   setTimeout(function(){ 
                                     $.post('betlolo/logar', dados,function( data ) {
-                                      window.location = "/"+data;
+                                      window.location = "/"+data.page;
                                     })}, 3000);
                                   
                              } else {
