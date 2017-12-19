@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="signup">
-                        <form id="form_cadastro">
+                        <form id="form_login">
                             <fieldset>
                                 <legend>Logar</legend>
                              
@@ -100,7 +100,7 @@
                                 </div>
                               
                                 <div class="form-group mb-2">
-                                    <button type="button" class="btn btn-primary" id="cadastrar">login</button>
+                                    <button type="button" class="btn btn-primary" id="login">login</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -236,14 +236,14 @@
     
     <!-- inject:js -->
     <script src="./index_files/plugins.min.js"></script>
-    <script src="./index_files/main.min.js"></script>
+  
     <!-- endinject -->
     <script type="text/javascript">
         
         $( document ).ready(function() {
             console.log( "ready!" );
-            $("#cadastrar").on('click', function(){
-                var dados = $("#form_cadastro").serialize();
+            $("#login").on('click', function(){
+                var dados = $("#form_login").serialize();
                 $.post('betlolo/logar', dados,function( data ) {
                     if(data.response == 1){
                         window.location = "/"+data.page;
