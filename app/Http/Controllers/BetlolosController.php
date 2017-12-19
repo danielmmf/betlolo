@@ -12,10 +12,22 @@ class BetlolosController extends Controller {
 
 
         $data = explode('/',$_POST['nascimento']);
-        if($data[2] > 1996){
+
+        $ano = date("Y");
+        $minima = $ano -16;
+        $maxima = $ano -90;
+
+        if($data[2] > $minima){
             $resp = array();
             $resp['status'] = 0;
             $resp['response']="Erro ao salvar o usuario, você deve ser maior de 16 anos";
+            return response()->json($resp);
+        }
+
+        if($data[2] < $maxima){
+            $resp = array();
+            $resp['status'] = 0;
+            $resp['response']="Erro ao salvar o usuario, você deve ser menor de 90 anos";
             return response()->json($resp);
         }
 
