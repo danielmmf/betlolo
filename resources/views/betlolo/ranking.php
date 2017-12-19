@@ -147,7 +147,7 @@
                 //console.log(votes[i].cadastro.idade_atual);
                 total = total + votes[i].cadastro.idade_atual;
             }
-            $scope.media_idade = total/votes.length;
+            $scope.media_idade = Math.round(total/votes.length);
           //  console.log("veio aqui");
           }, function(err) {
             console.log(err);
