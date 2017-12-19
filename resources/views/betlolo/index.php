@@ -561,6 +561,10 @@
                     var day = parseInt(parts[0]);
                     var month = parseInt(parts[1]);
                     var year = parseInt(parts[2]);
+                    alert(year);
+                    if(year > 1996){
+                        return false;
+                    }
                     if (isNaN(day) || isNaN(month) || isNaN(year)) {
                         return false;
                     }
@@ -625,7 +629,7 @@
 
 
             $("#cadastrar").on('click', function(){
-                var dados = $("#form_cadastro").serialize();
+                
                 $("#form_cadastro").validate({
                     rules: {
                         name: {
@@ -683,6 +687,7 @@
                         }
                     },
                     submitHandler: function() {
+                        var dados = $("#form_cadastro").serialize();
                          $.post('betlolo/registrar', dados,function( data ) {
                              if (data.status == 1) {
                                   $('#overlay, #lolopoints').delay(200).fadeIn();

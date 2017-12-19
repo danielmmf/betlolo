@@ -7,6 +7,7 @@ class  FireBase{
 			$key = md5(strtolower($email));
 			$dateTime = new \DateTime();
 			//21/09/1982
+			print_r($nascimento);
 			$data_nascimento = \DateTime::createFromFormat('d/m/Y', $nascimento);
 			$diff = $data_nascimento->diff($dateTime); 
 

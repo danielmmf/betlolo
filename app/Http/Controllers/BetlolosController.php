@@ -9,6 +9,17 @@ class BetlolosController extends Controller {
     public function registrar(){
         $fb = new \App\Classes\FireBase;
 
+
+
+        $data = explode('/',$_POST['nascimento']);
+        if($data[2] > 1996){
+            $resp = array();
+            $resp['status'] = 0;
+            $resp['response']="Erro ao salvar o usuario, você deve ser maior de 16 anos";
+            return response()->json($resp);
+        }
+
+
             if(!$fb->salvar($_POST['email'],$_POST['nascimento']))
                 echo "Erro ao salvar o usuario";
         $resposta_cliente = \App\Classes\User::criar_cliente_comdata($_POST); 
