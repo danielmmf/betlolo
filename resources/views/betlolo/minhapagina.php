@@ -32,7 +32,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <strong>Minha Pagina Betlolo</strong>&nbsp;&nbsp; - &nbsp;&nbsp; <?php echo $nome ?> &nbsp;&nbsp; - &nbsp;&nbsp;<a href="/logoff">Logoff</a>
+                        <strong>Minha Pagina Betlolo</strong>&nbsp;&nbsp; - &nbsp;&nbsp; <?php echo $nome ?> &nbsp;&nbsp; - &nbsp;&nbsp;<strong>PONTOS :{{pontos[0].pontuacao + pontos[1].pontuacao}}</strong>  &nbsp;&nbsp;-  &nbsp;&nbsp;<a href="/logoff">Logoff</a>
                     </div>
                 </div>
             </div>
@@ -57,12 +57,14 @@
                                     <tr>
                                         <th scope="col">Ação</th>
                                         <th scope="col">Data</th>
+                                        <th scope="col">POntos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat=" ponto in pontos">
                                         <td>{{ponto.game}}</td>
                                         <td>{{ponto.hora| date:"dd/MM/yyyy ' as ' h:mma"}}</td>
+                                        <td>{{ponto.pontuacao}}</td>
                                     </tr>
                                  </tbody>
                             </table>
