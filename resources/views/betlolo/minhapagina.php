@@ -57,7 +57,7 @@
                                     <tr>
                                         <th scope="col">Ação</th>
                                         <th scope="col">Data</th>
-                                        <th scope="col">POntos</th>
+                                        <th scope="col">Pontos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
