@@ -17,6 +17,7 @@ class BetlolosController extends Controller {
         $minima = $ano -16;
         $maxima = $ano -90;
 
+
         if($data[2] > $minima){
             $resp = array();
             $resp['status'] = 0;
