@@ -42,7 +42,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
-                        <a href="javascript:;" class="logo" title="Betlolo">Betlolo</a>
+                        <a href="/" class="logo" title="Betlolo">Betlolo</a>
 
                         <div class="mob-btn"><i class="ion-android-menu"></i></div>
 

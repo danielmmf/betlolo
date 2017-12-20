@@ -18,7 +18,7 @@
     <!-- endinject -->
 </head>
     
-<body   ng-controller="SampleCtrl">
+<body   ng-controller="BetloloCtrl">
 
     <!-- START HEADER -->
     <header>
@@ -131,7 +131,7 @@
 
 
     var app = angular.module("sampleApp", ["firebase"]);
-    app.controller("SampleCtrl", function($scope, $firebaseArray, $http) {
+    app.controller("BetloloCtrl", function($scope, $firebaseArray, $http) {
       var ref = firebase.database().ref("betlolo/usuarios");
       // create a synchronized array
      // $scope.pontos = $firebaseArray(ref);
