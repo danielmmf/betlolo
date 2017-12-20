@@ -38,6 +38,10 @@ User:
       schema: string
       rules: required
       tags: fillable
+    user_hash:
+      schema: string
+      rules: required
+      tags: fillable  
     email:
       schema: string
       rules: required

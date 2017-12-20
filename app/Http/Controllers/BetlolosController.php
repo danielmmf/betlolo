@@ -119,9 +119,17 @@ class BetlolosController extends Controller {
     }
 
      public function indicacao(){
-        $fb = new \App\Classes\FireBase;
-        echo $fb->indicacao($_GET['email']);
-        echo 'Pontos registrados com sucesso';
+
+        $hora_atual = new \DateTime();
+        $existe = \App\User::where('user_hash','=',$_GET['email'])->first();
+
+        $diferenca = $existe->updated_at->diff($hora_atual);
+      //  print_r($diferenca->i);
+        if($diferenca->i > 1){
+            $fb = new \App\Classes\FireBase;
+            echo $fb->indicacao($_GET['email']);
+            echo 'Pontos registrados com sucesso';
+        }
     }
 
     public function recuperar(){

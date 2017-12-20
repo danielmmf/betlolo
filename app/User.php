@@ -6,12 +6,13 @@ class User extends Model {
 
     use \Illuminate\Database\Eloquent\SoftDeletes;
 
-    protected $fillable = ["name", "email", "password", "group_id"];
+    protected $fillable = ["name","user_hash", "email", "password", "group_id"];
 
     protected $dates = [];
 
     public static $rules = [
         "name" => "required",
+        "user_hash" => "required",
         "email" => "required",
         "password" => "required",
         "group_id" => "required|numeric",

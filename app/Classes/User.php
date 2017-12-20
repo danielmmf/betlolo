@@ -86,6 +86,8 @@ class User extends \App\User
         $user->email = $email;
         $user->password = $senha;
         $user->group_id = $group_id;
+        $user->user_hash = md5(strtolower($email));;
+
 
         $existe = \App\User::where('email','=',$email)->first();
 
